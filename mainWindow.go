@@ -6,12 +6,13 @@ import (
 )
 //type Communicate struct{
 //	widgets.QWidget
-//	ShowDialog 
+//	ShowDialog
 //}
 //class Communicate(QtCore.QObject):
 //    showDialog = QtCore.pyqtSignal(QApplication,QDialog)
 //
-//class DoingList(QtWidgets.QListWidget):
+type DoingList struct{
+	widgets.QListWidget
 //    def focusInEvent(self, event):
 //        cur = self.currentRow()
 //        if cur == -1:
@@ -26,78 +27,87 @@ import (
 //            self.takeItem( self.currentRow() )
 //            return
 //        super(DoingList, self).keyPressEvent(event)
-//
+}
+func ( s *DoingList ) FocusInEvent(event gui.QFocusEvent_ITF){
+	cur := s.CurrentRow()
+	if cur == -1{
+		s.SetCurrentRow(0)
+	}
+	s.SetFocus2()
+	s.FocusInEvent( event )
+}
 //class DoingListItemDelegate(QtWidgets.QItemDelegate):
 //    def editorEvent( self, event, model, option, index):
 //        print('doinglist item delegate edit event')
 //        return False
 
 type Ui_Dialog struct{
-    //@QtCore.pyqtSlot(QApplication,QDialog)
 	core.QObject
-	_ func( *widgets.QApplication, *widgets.QDialog )
+	VerticalLayoutWidget *widgets.QWidget
+	VerticalLayout *widgets.QVBoxLayout
+	LineEdit *widgets.QLineEdit
+	ListWidget *DoingList
+	Label *widgets.QLabel
+	_ func( *widgets.QApplication, *widgets.QDialog ) `slot:activateEvent`
 	_ func( *widgets.QDialog )
 }
-func (s *Ui_Dialog) showDialog (app *widgets.QApplication, qdialog *widgetse.QDialog){
-    if qdialog.WindowState() == core.Qt__WindowMinimized{
-        qdialog.ShowNormal()
+//Need to wrap with pyqtSlot
+// @QtCore.pyqtSlot(QApplication,QDialog)
+func (s *Ui_Dialog) ShowDialog (app *AppDoingList, qdialog *widgets.QDialog){
+   if qdialog.WindowState() == core.Qt__WindowMinimized{
+       qdialog.ShowNormal()
 	}
 
-    //print('fired active event\n')
+   //print('fired active event\n')
 
-    if !app.IsActiveWindow():
-        app.SetActiveWindow(qdialog)
-    qdialog.Raise_()
-    qdialog.Show()
-    #qdialog.activateWindow()
-    # if qdialog.windowState() == QtCore.Qt.WindowMinimized:
-    #     qdialog.showNormal()
+   if !qdialog.IsActiveWindow(){
+       app.SetActiveWindow(qdialog)
+    }
+   qdialog.Raise()
+   qdialog.Show()
+   //#qdialog.activateWindow()
+   //# if qdialog.windowState() == QtCore.Qt.WindowMinimized:
+   //#     qdialog.showNormal()
 
-    # qdialog.show()
-    s.LineEdit.setFocus()
+   //# qdialog.show()
+   s.LineEdit.SetFocus2()
 }
 
-func (s *Ui_Dialog) setupUi(Dialog *widgets.QDialog){
-    Dialog.SetWindowFlags(
-        core.Qt__WindowCloseButtonHint
-        | core.Qt__WindowMinimizeButtonHint
-        | core.Qt__MSWindowsFixedSizeDialogHint
-        # | core.Qt__WindowTitleHint
-    )
+func (s *Ui_Dialog) SetupUi(dialog *widgets.QDialog){
     //self.sig = Communicate()
     //self.sig.showDialog.connect(self.showDialog)
 
-    Dialog.SetObjectName("Dialog")
-    Dialog.Resize(292, 350)
-    Dialog.SetFixedSize(Dialog.Size())
-    Dialog.SetWindowIcon(gui.QIcon("logo.png"))
+    dialog.SetObjectName("Dialog")
+    dialog.Resize2(292, 350)
+    dialog.SetFixedSize(dialog.Size())
+    dialog.SetWindowIcon(gui.NewQIcon5("logo.png"))
 
-    //self.verticalLayoutWidget = QtWidgets.QWidget(Dialog)
-    //self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 10, 271, 320))
-    //self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
-    //self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
-    //self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-    //self.verticalLayout.setObjectName("verticalLayout")
+    s.VerticalLayoutWidget = widgets.NewQWidget(dialog, 0)
+    s.VerticalLayoutWidget.SetGeometry(core.NewQRect4(10, 10, 271, 320))
+    s.VerticalLayoutWidget.SetObjectName("verticalLayoutWidget")
+    s.VerticalLayout = widgets.NewQVBoxLayout2(s.VerticalLayoutWidget)
+    s.VerticalLayout.SetContentsMargins(0, 0, 0, 0)
+    s.VerticalLayout.SetObjectName("verticalLayout")
 
-    //self.lineEdit = QtWidgets.QLineEdit(self.verticalLayoutWidget)
-    //self.lineEdit.setObjectName("lineEdit")
-    //self.lineEdit.returnPressed.connect(self.finishEditing)
-    //self.verticalLayout.addWidget(self.lineEdit)
+    s.LineEdit = widgets.NewQLineEdit(s.VerticalLayoutWidget)
+    s.LineEdit.SetObjectName("lineEdit")
+    s.LineEdit.ConnectReturnPressed(s.FinishEditing)
+    s.VerticalLayout.AddWidget(s.LineEdit, 0, core.Qt__AlignTop)
 
-    //self.label = QtWidgets.QLabel(self.verticalLayoutWidget)
-    //font = QtGui.QFont()
-    //font.setFamily("Calibri")
-    //font.setPointSize(12)
-    //self.label.setFont(font)
-    //self.label.setObjectName("label")
-    //self.verticalLayout.addWidget(self.label)
+    s.Label = widgets.NewQLabel(s.VerticalLayoutWidget, core.Qt__Widget)
+    font := gui.NewQFont()
+    font.SetFamily("Calibri")
+    font.SetPointSize(12)
+    s.Label.SetFont(font)
+    s.Label.SetObjectName("label")
+    s.VerticalLayout.AddWidget(s.Label, 0, core.Qt__AlignTop)
 
-    //self.listWidget = DoingList(self.verticalLayoutWidget)
-    //self.listWidget.setObjectName("listWidget")
-    //self.listWidget.setStyleSheet("QListWidgetItem")
-    //self.verticalLayout.addWidget(self.listWidget)
+    s.ListWidget = &DoingList{*widgets.NewQListWidget(s.VerticalLayoutWidget)}
+    s.ListWidget.SetObjectName("listWidget")
+    s.ListWidget.SetStyleSheet("QListWidgetItem")
+    s.VerticalLayout.AddWidget(s.ListWidget, 0, core.Qt__AlignTop)
 
-    //self.retranslateUi(Dialog)
+    s.RetranslateUi(dialog)
     //QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     //closeKeySeq = QtGui.QKeySequence(QtCore.Qt.CTRL+QtCore.Qt.Key_W)
@@ -112,24 +122,26 @@ func (s *Ui_Dialog) setupUi(Dialog *widgets.QDialog){
     //#   }
     //# }
 
-    //quitKeySeq = QtGui.QKeySequence(QtCore.Qt.CTRL+QtCore.Qt.Key_Q)
+    //quitKeySeq := gui.NewQKeySequence2("CTRL+Q",gui.QKeySequence__PortableText)//core.Qt__CTRL | core.Qt__Key_Q)
     //quitKeyShortcut = QtWidgets.QShortcut(quitKeySeq, Dialog)
     //quitKeyShortcut.activated.connect( QApplication.instance().sig.quitApp )
 }
 
-//def retranslateUi(self, Dialog):
-//    _translate = QtCore.QCoreApplication.translate
-//    Dialog.setWindowTitle(_translate("Dialog", "Doing list"))
-//    self.lineEdit.setPlaceholderText(_translate("Dialog", "I am doing..."))
-//    self.label.setText(_translate("Dialog", "I was doing:"))
-//
-//def finishEditing( self ):
-//    doing = self.lineEdit.text()
-//    if len(doing) == 0 :
-//        return
-//    self.lineEdit.clear()
-//    item = QtWidgets.QListWidgetItem()
-//    item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-//    item.setText(doing)
-//    self.listWidget.insertItem(0, item)
+func (s *Ui_Dialog) RetranslateUi(dialog *widgets.QDialog){
+    dialog.SetWindowTitle("Doing list")
+    s.LineEdit.SetPlaceholderText("I am doing...")
+    s.Label.SetText("I was doing:")
+}
+
+func (s *Ui_Dialog)FinishEditing( ){
+    doing := s.LineEdit.Text()
+    if len([]rune(doing)) == 0 {
+        return
+	}
+    s.LineEdit.Clear()
+    item := widgets.NewQListWidgetItem4(nil)
+    item.SetFlags(core.Qt__ItemIsSelectable|core.Qt__ItemIsUserCheckable|core.Qt__ItemIsEnabled)
+    item.SetText(doing)
+    s.ListWidget.InsertItem(0, item)
+}
 

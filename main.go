@@ -3,58 +3,60 @@ import(
     "os"
 	"syscall"
 
-	//"github.com/therecipe/qt/core"
+	"github.com/therecipe/qt/core"
 	"github.com/therecipe/qt/widgets"
 )
 
-//class Communicate(QtCore.QObject):
-//    quitApp = QtCore.pyqtSignal()
-//    activateApp = QtCore.pyqtSignal()
 
-//func closeEvent(){
-//    quit_msg = "你确定要退出吗？"
-//    activateEvent()
-//    reply = QtWidgets.QMessageBox.question(mainDialog, 'Message',
-//                     quit_msg, QtWidgets.QMessageBox.Yes, QtWidgets.QMessageBox.No)
+//func closeEvent( mainDialog *widgets.QDialog){
+//    quit_msg := "你确定要退出吗？"
+//    ActivateEvent();
+//    reply := widgets.QMessageBox_Question(mainDialog, "Message",
+//                     quit_msg, widgets.QMessageBox__Yes, widgets.QMessageBox__No)
 //
-//    if reply == QtWidgets.QMessageBox.Yes:
-//        sys.exit()
+//    if reply == widgets.QMessageBox__Yes{
+//        syscall.Exit(0)
+//	}
 //}
 
-//func activateEvent():
-//    ui.sig.showDialog.emit(app,mainDialog)
-//}
+type AppDoingList struct{
+    widgets.QApplication
+    _ func() `signal:"quitApp"`
+    _ func() `signal:"activateApp"`
+}
 
 func main(){
-	//ok
-    //var app *core.QCoreApplication
-    //app = core.QCoreApplication_Instance( )
-
-    var app *widgets.QApplication
+    //var app *widgets.QApplication
+    //if(app==nil){
+    //    app = widgets.NewQApplication(len(os.Args), os.Args)
+    //}
+    var app *AppDoingList
     if(app==nil){
-        app = widgets.NewQApplication(len(os.Args), os.Args)
+        app = NewAppDoingList(len(os.Args), os.Args)
+        //app = &AppDoingList{QApplication:*widgets.NewQApplication(len(os.Args), os.Args)}
 	}
-    //app.sig = Communicate()
-    //app.sig.quitApp.connect(closeEvent)
-    //app.sig.activateApp.connect(activateEvent)
 
-
-    if widgets.QSystemTrayIcon_IsSystemTrayAvailable() {
+    if !widgets.QSystemTrayIcon_IsSystemTrayAvailable() {
         widgets.QMessageBox_Critical(nil, "系统托盘", "不支持系统托盘", widgets.QMessageBox__Close, widgets.QMessageBox__Close)
         syscall.Exit(1)
 	}
 
-    mainDialog := widgets.NewQDialogFromPointer(nil)
-    ui = go4l.mainWindow.Ui_Dialog()
-    //ui.setupUi(mainDialog)
-    // mainDialog.show()
+    mainDialog := widgets.NewQDialog(nil, core.Qt__WindowCloseButtonHint | core.Qt__WindowMinimizeButtonHint | core.Qt__MSWindowsFixedSizeDialogHint)
+    // | core.Qt__WindowTitleHint
+    var ui Ui_Dialog
+    ui.SetupUi(mainDialog)
+    mainDialog.Show()
 
-    //mainWidget = QDesktopWidget()
-    //wid = Ui_SysTray()
-    //wid.setupUi( mainWidget, app )
-    //mainWidget.show()
+    mainWidget := widgets.NewQDesktopWidgetFromPointer(nil)
+    wid := new(Ui_SysTray)
+    wid.SetupUi( mainWidget, app )
+    mainWidget.Show()
 
-    //QApplication.setQuitOnLastWindowClosed(False)
+    app.SetQuitOnLastWindowClosed(false)
+
+    //app.ConnectQuitApp(closeEvent)
+	activateEvent := func(){ui.ShowDialog(app,mainDialog)}
+    app.ConnectActivateApp(activateEvent)
 
     //keyboard.add_hotkey('ctrl+alt+d', activateEvent)
     //keyboard.add_hotkey('shift+alt+c', activateEvent)

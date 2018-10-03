@@ -1,26 +1,31 @@
-import main
-from PyQt5.QtCore import QUrl, QObject
-from PyQt5 import QtGui
-from PyQt5 import QtCore
-from PyQt5.QtWidgets import QApplication, QSystemTrayIcon, QMenu, QAction, QWidgetAction, QPushButton, QLabel, QHBoxLayout, QVBoxLayout
+package main
 import(
+	"fmt"
+	"github.com/therecipe/qt/core"
+	"github.com/therecipe/qt/gui"
 	"github.com/therecipe/qt/widgets"
 )
-class Ui_SysTray(QtCore.QObject):
-    def setupUi(self, widget, app):
-        systray = QSystemTrayIcon( QtGui.QIcon(main.resource_path("logo.png")), widget)
-        systray.setToolTip("B4L")
-        systray.activated.connect(lambda reason: self.iconTriggered(reason, app))
+type Ui_SysTray struct{
+	core.QObject
+}
+func (s *Ui_SysTray) SetupUi( widget *widgets.QDesktopWidget, app *AppDoingList){
+    systray := widgets.NewQSystemTrayIcon2( gui.NewQIcon5("logo.png"), widget)
+    systray.SetToolTip("B4L")
+    //systray.Activated.connect(lambda reason: self.iconTriggered(reason, app))
 
-        tray_icon_menu = QMenu(None)
-        openAction = tray_icon_menu.addAction('Open')
-        openAction.triggered.connect(app.sig.activateApp.emit)
-        exitAction = tray_icon_menu.addAction('Exit')
-        exitAction.triggered.connect(app.sig.quitApp.emit)
+    tray_icon_menu := widgets.NewQMenu(nil)
+    //openAction := tray_icon_menu.AddAction("Open")
+    //openAction.Triggered.Connect(app.Sig.ActivateApp.Emit)
+    //exitAction := tray_icon_menu.AddAction("Exit")
+    //exitAction.Triggered.Connect(app.Sig.QuitApp.Emit)
 
-        systray.setContextMenu(tray_icon_menu)
-        systray.show()
+    systray.SetContextMenu(tray_icon_menu)
+    systray.Show()
+}
 
-    def iconTriggered(self, reason, app):
-        if reason == QSystemTrayIcon.DoubleClick:
-            app.sig.activateApp.emit()
+func (self *Ui_SysTray) IconTriggered(reason widgets.QSystemTrayIcon__ActivationReason, app *widgets.QApplication){
+    if reason == widgets.QSystemTrayIcon__DoubleClick{
+		fmt.Sprintf("%s","Double clicked system trsy icon")
+        //app.Sig.ActivateApp.Emit()
+	}
+}
