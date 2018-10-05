@@ -246,8 +246,8 @@ int Ui_SysTray9733cb::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 struct qt_meta_stringdata_AppDoingList9733cb_t {
-    QByteArrayData data[4];
-    char stringdata0[40];
+    QByteArrayData data[10];
+    char stringdata0[104];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -259,10 +259,18 @@ static const qt_meta_stringdata_AppDoingList9733cb_t qt_meta_stringdata_AppDoing
 QT_MOC_LITERAL(0, 0, 18), // "AppDoingList9733cb"
 QT_MOC_LITERAL(1, 19, 7), // "quitApp"
 QT_MOC_LITERAL(2, 27, 0), // ""
-QT_MOC_LITERAL(3, 28, 11) // "activateApp"
+QT_MOC_LITERAL(3, 28, 16), // "Ui_Dialog9733cb*"
+QT_MOC_LITERAL(4, 45, 2), // "ui"
+QT_MOC_LITERAL(5, 48, 19), // "AppDoingList9733cb*"
+QT_MOC_LITERAL(6, 68, 3), // "app"
+QT_MOC_LITERAL(7, 72, 8), // "QDialog*"
+QT_MOC_LITERAL(8, 81, 10), // "mainDialog"
+QT_MOC_LITERAL(9, 92, 11) // "activateApp"
 
     },
-    "AppDoingList9733cb\0quitApp\0\0activateApp"
+    "AppDoingList9733cb\0quitApp\0\0"
+    "Ui_Dialog9733cb*\0ui\0AppDoingList9733cb*\0"
+    "app\0QDialog*\0mainDialog\0activateApp"
 };
 #undef QT_MOC_LITERAL
 
@@ -280,12 +288,12 @@ static const uint qt_meta_data_AppDoingList9733cb[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   24,    2, 0x06 /* Public */,
-       3,    0,   25,    2, 0x06 /* Public */,
+       1,    3,   24,    2, 0x06 /* Public */,
+       9,    3,   31,    2, 0x06 /* Public */,
 
  // signals: parameters
-    QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 3, 0x80000000 | 5, 0x80000000 | 7,    4,    6,    8,
+    QMetaType::Void, 0x80000000 | 3, 0x80000000 | 5, 0x80000000 | 7,    4,    6,    8,
 
        0        // eod
 };
@@ -296,28 +304,49 @@ void AppDoingList9733cb::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
         AppDoingList9733cb *_t = static_cast<AppDoingList9733cb *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->quitApp(); break;
-        case 1: _t->activateApp(); break;
+        case 0: _t->quitApp((*reinterpret_cast< Ui_Dialog9733cb*(*)>(_a[1])),(*reinterpret_cast< AppDoingList9733cb*(*)>(_a[2])),(*reinterpret_cast< QDialog*(*)>(_a[3]))); break;
+        case 1: _t->activateApp((*reinterpret_cast< Ui_Dialog9733cb*(*)>(_a[1])),(*reinterpret_cast< AppDoingList9733cb*(*)>(_a[2])),(*reinterpret_cast< QDialog*(*)>(_a[3]))); break;
         default: ;
+        }
+    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        switch (_id) {
+        default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+        case 0:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+            case 1:
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< AppDoingList9733cb* >(); break;
+            case 0:
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< Ui_Dialog9733cb* >(); break;
+            }
+            break;
+        case 1:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+            case 1:
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< AppDoingList9733cb* >(); break;
+            case 0:
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< Ui_Dialog9733cb* >(); break;
+            }
+            break;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (AppDoingList9733cb::*)();
+            using _t = void (AppDoingList9733cb::*)(Ui_Dialog9733cb * , AppDoingList9733cb * , QDialog * );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&AppDoingList9733cb::quitApp)) {
                 *result = 0;
                 return;
             }
         }
         {
-            using _t = void (AppDoingList9733cb::*)();
+            using _t = void (AppDoingList9733cb::*)(Ui_Dialog9733cb * , AppDoingList9733cb * , QDialog * );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&AppDoingList9733cb::activateApp)) {
                 *result = 1;
                 return;
             }
         }
     }
-    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject AppDoingList9733cb::staticMetaObject = {
@@ -350,22 +379,24 @@ int AppDoingList9733cb::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         _id -= 2;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         if (_id < 2)
-            *reinterpret_cast<int*>(_a[0]) = -1;
+            qt_static_metacall(this, _c, _id, _a);
         _id -= 2;
     }
     return _id;
 }
 
 // SIGNAL 0
-void AppDoingList9733cb::quitApp()
+void AppDoingList9733cb::quitApp(Ui_Dialog9733cb * _t1, AppDoingList9733cb * _t2, QDialog * _t3)
 {
-    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
-void AppDoingList9733cb::activateApp()
+void AppDoingList9733cb::activateApp(Ui_Dialog9733cb * _t1, AppDoingList9733cb * _t2, QDialog * _t3)
 {
-    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

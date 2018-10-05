@@ -23,869 +23,6 @@ func cGoUnpackString(s C.struct_Moc_PackedString) string {
 	return C.GoStringN(s.data, C.int(s.len))
 }
 
-type Ui_Dialog_ITF interface {
-	std_core.QObject_ITF
-	Ui_Dialog_PTR() *Ui_Dialog
-}
-
-func (ptr *Ui_Dialog) Ui_Dialog_PTR() *Ui_Dialog {
-	return ptr
-}
-
-func (ptr *Ui_Dialog) Pointer() unsafe.Pointer {
-	if ptr != nil {
-		return ptr.QObject_PTR().Pointer()
-	}
-	return nil
-}
-
-func (ptr *Ui_Dialog) SetPointer(p unsafe.Pointer) {
-	if ptr != nil {
-		ptr.QObject_PTR().SetPointer(p)
-	}
-}
-
-func PointerFromUi_Dialog(ptr Ui_Dialog_ITF) unsafe.Pointer {
-	if ptr != nil {
-		return ptr.Ui_Dialog_PTR().Pointer()
-	}
-	return nil
-}
-
-func NewUi_DialogFromPointer(ptr unsafe.Pointer) (n *Ui_Dialog) {
-	if gPtr, ok := qt.Receive(ptr); !ok {
-		n = new(Ui_Dialog)
-		n.SetPointer(ptr)
-	} else {
-		switch deduced := gPtr.(type) {
-		case *Ui_Dialog:
-			n = deduced
-
-		case *std_core.QObject:
-			n = &Ui_Dialog{QObject: *deduced}
-
-		default:
-			n = new(Ui_Dialog)
-			n.SetPointer(ptr)
-		}
-	}
-	return
-}
-
-//export callbackUi_Dialog9733cb_Constructor
-func callbackUi_Dialog9733cb_Constructor(ptr unsafe.Pointer) {
-	this := NewUi_DialogFromPointer(ptr)
-	qt.Register(ptr, this)
-}
-
-//export callbackUi_Dialog9733cb_ActivateEvent
-func callbackUi_Dialog9733cb_ActivateEvent(ptr unsafe.Pointer, v0 unsafe.Pointer, v1 unsafe.Pointer) {
-	if signal := qt.GetSignal(ptr, "activateEvent"); signal != nil {
-		signal.(func(*std_widgets.QApplication, *std_widgets.QDialog))(std_widgets.NewQApplicationFromPointer(v0), std_widgets.NewQDialogFromPointer(v1))
-	}
-
-}
-
-func (ptr *Ui_Dialog) ConnectActivateEvent(f func(v0 *std_widgets.QApplication, v1 *std_widgets.QDialog)) {
-	if ptr.Pointer() != nil {
-
-		if signal := qt.LendSignal(ptr.Pointer(), "activateEvent"); signal != nil {
-			qt.ConnectSignal(ptr.Pointer(), "activateEvent", func(v0 *std_widgets.QApplication, v1 *std_widgets.QDialog) {
-				signal.(func(*std_widgets.QApplication, *std_widgets.QDialog))(v0, v1)
-				f(v0, v1)
-			})
-		} else {
-			qt.ConnectSignal(ptr.Pointer(), "activateEvent", f)
-		}
-	}
-}
-
-func (ptr *Ui_Dialog) DisconnectActivateEvent() {
-	if ptr.Pointer() != nil {
-
-		qt.DisconnectSignal(ptr.Pointer(), "activateEvent")
-	}
-}
-
-func (ptr *Ui_Dialog) ActivateEvent(v0 std_widgets.QApplication_ITF, v1 std_widgets.QDialog_ITF) {
-	if ptr.Pointer() != nil {
-		C.Ui_Dialog9733cb_ActivateEvent(ptr.Pointer(), std_widgets.PointerFromQApplication(v0), std_widgets.PointerFromQDialog(v1))
-	}
-}
-
-func Ui_Dialog_QRegisterMetaType() int {
-	return int(int32(C.Ui_Dialog9733cb_Ui_Dialog9733cb_QRegisterMetaType()))
-}
-
-func (ptr *Ui_Dialog) QRegisterMetaType() int {
-	return int(int32(C.Ui_Dialog9733cb_Ui_Dialog9733cb_QRegisterMetaType()))
-}
-
-func Ui_Dialog_QRegisterMetaType2(typeName string) int {
-	var typeNameC *C.char
-	if typeName != "" {
-		typeNameC = C.CString(typeName)
-		defer C.free(unsafe.Pointer(typeNameC))
-	}
-	return int(int32(C.Ui_Dialog9733cb_Ui_Dialog9733cb_QRegisterMetaType2(typeNameC)))
-}
-
-func (ptr *Ui_Dialog) QRegisterMetaType2(typeName string) int {
-	var typeNameC *C.char
-	if typeName != "" {
-		typeNameC = C.CString(typeName)
-		defer C.free(unsafe.Pointer(typeNameC))
-	}
-	return int(int32(C.Ui_Dialog9733cb_Ui_Dialog9733cb_QRegisterMetaType2(typeNameC)))
-}
-
-func Ui_Dialog_QmlRegisterType() int {
-	return int(int32(C.Ui_Dialog9733cb_Ui_Dialog9733cb_QmlRegisterType()))
-}
-
-func (ptr *Ui_Dialog) QmlRegisterType() int {
-	return int(int32(C.Ui_Dialog9733cb_Ui_Dialog9733cb_QmlRegisterType()))
-}
-
-func Ui_Dialog_QmlRegisterType2(uri string, versionMajor int, versionMinor int, qmlName string) int {
-	var uriC *C.char
-	if uri != "" {
-		uriC = C.CString(uri)
-		defer C.free(unsafe.Pointer(uriC))
-	}
-	var qmlNameC *C.char
-	if qmlName != "" {
-		qmlNameC = C.CString(qmlName)
-		defer C.free(unsafe.Pointer(qmlNameC))
-	}
-	return int(int32(C.Ui_Dialog9733cb_Ui_Dialog9733cb_QmlRegisterType2(uriC, C.int(int32(versionMajor)), C.int(int32(versionMinor)), qmlNameC)))
-}
-
-func (ptr *Ui_Dialog) QmlRegisterType2(uri string, versionMajor int, versionMinor int, qmlName string) int {
-	var uriC *C.char
-	if uri != "" {
-		uriC = C.CString(uri)
-		defer C.free(unsafe.Pointer(uriC))
-	}
-	var qmlNameC *C.char
-	if qmlName != "" {
-		qmlNameC = C.CString(qmlName)
-		defer C.free(unsafe.Pointer(qmlNameC))
-	}
-	return int(int32(C.Ui_Dialog9733cb_Ui_Dialog9733cb_QmlRegisterType2(uriC, C.int(int32(versionMajor)), C.int(int32(versionMinor)), qmlNameC)))
-}
-
-func (ptr *Ui_Dialog) __dynamicPropertyNames_atList(i int) *std_core.QByteArray {
-	if ptr.Pointer() != nil {
-		tmpValue := std_core.NewQByteArrayFromPointer(C.Ui_Dialog9733cb___dynamicPropertyNames_atList(ptr.Pointer(), C.int(int32(i))))
-		runtime.SetFinalizer(tmpValue, (*std_core.QByteArray).DestroyQByteArray)
-		return tmpValue
-	}
-	return nil
-}
-
-func (ptr *Ui_Dialog) __dynamicPropertyNames_setList(i std_core.QByteArray_ITF) {
-	if ptr.Pointer() != nil {
-		C.Ui_Dialog9733cb___dynamicPropertyNames_setList(ptr.Pointer(), std_core.PointerFromQByteArray(i))
-	}
-}
-
-func (ptr *Ui_Dialog) __dynamicPropertyNames_newList() unsafe.Pointer {
-	return C.Ui_Dialog9733cb___dynamicPropertyNames_newList(ptr.Pointer())
-}
-
-func (ptr *Ui_Dialog) __findChildren_atList2(i int) *std_core.QObject {
-	if ptr.Pointer() != nil {
-		tmpValue := std_core.NewQObjectFromPointer(C.Ui_Dialog9733cb___findChildren_atList2(ptr.Pointer(), C.int(int32(i))))
-		if !qt.ExistsSignal(tmpValue.Pointer(), "destroyed") {
-			tmpValue.ConnectDestroyed(func(*std_core.QObject) { tmpValue.SetPointer(nil) })
-		}
-		return tmpValue
-	}
-	return nil
-}
-
-func (ptr *Ui_Dialog) __findChildren_setList2(i std_core.QObject_ITF) {
-	if ptr.Pointer() != nil {
-		C.Ui_Dialog9733cb___findChildren_setList2(ptr.Pointer(), std_core.PointerFromQObject(i))
-	}
-}
-
-func (ptr *Ui_Dialog) __findChildren_newList2() unsafe.Pointer {
-	return C.Ui_Dialog9733cb___findChildren_newList2(ptr.Pointer())
-}
-
-func (ptr *Ui_Dialog) __findChildren_atList3(i int) *std_core.QObject {
-	if ptr.Pointer() != nil {
-		tmpValue := std_core.NewQObjectFromPointer(C.Ui_Dialog9733cb___findChildren_atList3(ptr.Pointer(), C.int(int32(i))))
-		if !qt.ExistsSignal(tmpValue.Pointer(), "destroyed") {
-			tmpValue.ConnectDestroyed(func(*std_core.QObject) { tmpValue.SetPointer(nil) })
-		}
-		return tmpValue
-	}
-	return nil
-}
-
-func (ptr *Ui_Dialog) __findChildren_setList3(i std_core.QObject_ITF) {
-	if ptr.Pointer() != nil {
-		C.Ui_Dialog9733cb___findChildren_setList3(ptr.Pointer(), std_core.PointerFromQObject(i))
-	}
-}
-
-func (ptr *Ui_Dialog) __findChildren_newList3() unsafe.Pointer {
-	return C.Ui_Dialog9733cb___findChildren_newList3(ptr.Pointer())
-}
-
-func (ptr *Ui_Dialog) __findChildren_atList(i int) *std_core.QObject {
-	if ptr.Pointer() != nil {
-		tmpValue := std_core.NewQObjectFromPointer(C.Ui_Dialog9733cb___findChildren_atList(ptr.Pointer(), C.int(int32(i))))
-		if !qt.ExistsSignal(tmpValue.Pointer(), "destroyed") {
-			tmpValue.ConnectDestroyed(func(*std_core.QObject) { tmpValue.SetPointer(nil) })
-		}
-		return tmpValue
-	}
-	return nil
-}
-
-func (ptr *Ui_Dialog) __findChildren_setList(i std_core.QObject_ITF) {
-	if ptr.Pointer() != nil {
-		C.Ui_Dialog9733cb___findChildren_setList(ptr.Pointer(), std_core.PointerFromQObject(i))
-	}
-}
-
-func (ptr *Ui_Dialog) __findChildren_newList() unsafe.Pointer {
-	return C.Ui_Dialog9733cb___findChildren_newList(ptr.Pointer())
-}
-
-func (ptr *Ui_Dialog) __children_atList(i int) *std_core.QObject {
-	if ptr.Pointer() != nil {
-		tmpValue := std_core.NewQObjectFromPointer(C.Ui_Dialog9733cb___children_atList(ptr.Pointer(), C.int(int32(i))))
-		if !qt.ExistsSignal(tmpValue.Pointer(), "destroyed") {
-			tmpValue.ConnectDestroyed(func(*std_core.QObject) { tmpValue.SetPointer(nil) })
-		}
-		return tmpValue
-	}
-	return nil
-}
-
-func (ptr *Ui_Dialog) __children_setList(i std_core.QObject_ITF) {
-	if ptr.Pointer() != nil {
-		C.Ui_Dialog9733cb___children_setList(ptr.Pointer(), std_core.PointerFromQObject(i))
-	}
-}
-
-func (ptr *Ui_Dialog) __children_newList() unsafe.Pointer {
-	return C.Ui_Dialog9733cb___children_newList(ptr.Pointer())
-}
-
-func NewUi_Dialog(parent std_core.QObject_ITF) *Ui_Dialog {
-	tmpValue := NewUi_DialogFromPointer(C.Ui_Dialog9733cb_NewUi_Dialog(std_core.PointerFromQObject(parent)))
-	if !qt.ExistsSignal(tmpValue.Pointer(), "destroyed") {
-		tmpValue.ConnectDestroyed(func(*std_core.QObject) { tmpValue.SetPointer(nil) })
-	}
-	return tmpValue
-}
-
-//export callbackUi_Dialog9733cb_DestroyUi_Dialog
-func callbackUi_Dialog9733cb_DestroyUi_Dialog(ptr unsafe.Pointer) {
-	if signal := qt.GetSignal(ptr, "~Ui_Dialog"); signal != nil {
-		signal.(func())()
-	} else {
-		NewUi_DialogFromPointer(ptr).DestroyUi_DialogDefault()
-	}
-}
-
-func (ptr *Ui_Dialog) ConnectDestroyUi_Dialog(f func()) {
-	if ptr.Pointer() != nil {
-
-		if signal := qt.LendSignal(ptr.Pointer(), "~Ui_Dialog"); signal != nil {
-			qt.ConnectSignal(ptr.Pointer(), "~Ui_Dialog", func() {
-				signal.(func())()
-				f()
-			})
-		} else {
-			qt.ConnectSignal(ptr.Pointer(), "~Ui_Dialog", f)
-		}
-	}
-}
-
-func (ptr *Ui_Dialog) DisconnectDestroyUi_Dialog() {
-	if ptr.Pointer() != nil {
-
-		qt.DisconnectSignal(ptr.Pointer(), "~Ui_Dialog")
-	}
-}
-
-func (ptr *Ui_Dialog) DestroyUi_Dialog() {
-	if ptr.Pointer() != nil {
-		C.Ui_Dialog9733cb_DestroyUi_Dialog(ptr.Pointer())
-		ptr.SetPointer(nil)
-		runtime.SetFinalizer(ptr, nil)
-	}
-}
-
-func (ptr *Ui_Dialog) DestroyUi_DialogDefault() {
-	if ptr.Pointer() != nil {
-		C.Ui_Dialog9733cb_DestroyUi_DialogDefault(ptr.Pointer())
-		ptr.SetPointer(nil)
-		runtime.SetFinalizer(ptr, nil)
-	}
-}
-
-//export callbackUi_Dialog9733cb_Event
-func callbackUi_Dialog9733cb_Event(ptr unsafe.Pointer, e unsafe.Pointer) C.char {
-	if signal := qt.GetSignal(ptr, "event"); signal != nil {
-		return C.char(int8(qt.GoBoolToInt(signal.(func(*std_core.QEvent) bool)(std_core.NewQEventFromPointer(e)))))
-	}
-
-	return C.char(int8(qt.GoBoolToInt(NewUi_DialogFromPointer(ptr).EventDefault(std_core.NewQEventFromPointer(e)))))
-}
-
-func (ptr *Ui_Dialog) EventDefault(e std_core.QEvent_ITF) bool {
-	if ptr.Pointer() != nil {
-		return C.Ui_Dialog9733cb_EventDefault(ptr.Pointer(), std_core.PointerFromQEvent(e)) != 0
-	}
-	return false
-}
-
-//export callbackUi_Dialog9733cb_EventFilter
-func callbackUi_Dialog9733cb_EventFilter(ptr unsafe.Pointer, watched unsafe.Pointer, event unsafe.Pointer) C.char {
-	if signal := qt.GetSignal(ptr, "eventFilter"); signal != nil {
-		return C.char(int8(qt.GoBoolToInt(signal.(func(*std_core.QObject, *std_core.QEvent) bool)(std_core.NewQObjectFromPointer(watched), std_core.NewQEventFromPointer(event)))))
-	}
-
-	return C.char(int8(qt.GoBoolToInt(NewUi_DialogFromPointer(ptr).EventFilterDefault(std_core.NewQObjectFromPointer(watched), std_core.NewQEventFromPointer(event)))))
-}
-
-func (ptr *Ui_Dialog) EventFilterDefault(watched std_core.QObject_ITF, event std_core.QEvent_ITF) bool {
-	if ptr.Pointer() != nil {
-		return C.Ui_Dialog9733cb_EventFilterDefault(ptr.Pointer(), std_core.PointerFromQObject(watched), std_core.PointerFromQEvent(event)) != 0
-	}
-	return false
-}
-
-//export callbackUi_Dialog9733cb_ChildEvent
-func callbackUi_Dialog9733cb_ChildEvent(ptr unsafe.Pointer, event unsafe.Pointer) {
-	if signal := qt.GetSignal(ptr, "childEvent"); signal != nil {
-		signal.(func(*std_core.QChildEvent))(std_core.NewQChildEventFromPointer(event))
-	} else {
-		NewUi_DialogFromPointer(ptr).ChildEventDefault(std_core.NewQChildEventFromPointer(event))
-	}
-}
-
-func (ptr *Ui_Dialog) ChildEventDefault(event std_core.QChildEvent_ITF) {
-	if ptr.Pointer() != nil {
-		C.Ui_Dialog9733cb_ChildEventDefault(ptr.Pointer(), std_core.PointerFromQChildEvent(event))
-	}
-}
-
-//export callbackUi_Dialog9733cb_ConnectNotify
-func callbackUi_Dialog9733cb_ConnectNotify(ptr unsafe.Pointer, sign unsafe.Pointer) {
-	if signal := qt.GetSignal(ptr, "connectNotify"); signal != nil {
-		signal.(func(*std_core.QMetaMethod))(std_core.NewQMetaMethodFromPointer(sign))
-	} else {
-		NewUi_DialogFromPointer(ptr).ConnectNotifyDefault(std_core.NewQMetaMethodFromPointer(sign))
-	}
-}
-
-func (ptr *Ui_Dialog) ConnectNotifyDefault(sign std_core.QMetaMethod_ITF) {
-	if ptr.Pointer() != nil {
-		C.Ui_Dialog9733cb_ConnectNotifyDefault(ptr.Pointer(), std_core.PointerFromQMetaMethod(sign))
-	}
-}
-
-//export callbackUi_Dialog9733cb_CustomEvent
-func callbackUi_Dialog9733cb_CustomEvent(ptr unsafe.Pointer, event unsafe.Pointer) {
-	if signal := qt.GetSignal(ptr, "customEvent"); signal != nil {
-		signal.(func(*std_core.QEvent))(std_core.NewQEventFromPointer(event))
-	} else {
-		NewUi_DialogFromPointer(ptr).CustomEventDefault(std_core.NewQEventFromPointer(event))
-	}
-}
-
-func (ptr *Ui_Dialog) CustomEventDefault(event std_core.QEvent_ITF) {
-	if ptr.Pointer() != nil {
-		C.Ui_Dialog9733cb_CustomEventDefault(ptr.Pointer(), std_core.PointerFromQEvent(event))
-	}
-}
-
-//export callbackUi_Dialog9733cb_DeleteLater
-func callbackUi_Dialog9733cb_DeleteLater(ptr unsafe.Pointer) {
-	if signal := qt.GetSignal(ptr, "deleteLater"); signal != nil {
-		signal.(func())()
-	} else {
-		NewUi_DialogFromPointer(ptr).DeleteLaterDefault()
-	}
-}
-
-func (ptr *Ui_Dialog) DeleteLaterDefault() {
-	if ptr.Pointer() != nil {
-		C.Ui_Dialog9733cb_DeleteLaterDefault(ptr.Pointer())
-		ptr.SetPointer(nil)
-		runtime.SetFinalizer(ptr, nil)
-	}
-}
-
-//export callbackUi_Dialog9733cb_Destroyed
-func callbackUi_Dialog9733cb_Destroyed(ptr unsafe.Pointer, obj unsafe.Pointer) {
-	if signal := qt.GetSignal(ptr, "destroyed"); signal != nil {
-		signal.(func(*std_core.QObject))(std_core.NewQObjectFromPointer(obj))
-	}
-
-}
-
-//export callbackUi_Dialog9733cb_DisconnectNotify
-func callbackUi_Dialog9733cb_DisconnectNotify(ptr unsafe.Pointer, sign unsafe.Pointer) {
-	if signal := qt.GetSignal(ptr, "disconnectNotify"); signal != nil {
-		signal.(func(*std_core.QMetaMethod))(std_core.NewQMetaMethodFromPointer(sign))
-	} else {
-		NewUi_DialogFromPointer(ptr).DisconnectNotifyDefault(std_core.NewQMetaMethodFromPointer(sign))
-	}
-}
-
-func (ptr *Ui_Dialog) DisconnectNotifyDefault(sign std_core.QMetaMethod_ITF) {
-	if ptr.Pointer() != nil {
-		C.Ui_Dialog9733cb_DisconnectNotifyDefault(ptr.Pointer(), std_core.PointerFromQMetaMethod(sign))
-	}
-}
-
-//export callbackUi_Dialog9733cb_ObjectNameChanged
-func callbackUi_Dialog9733cb_ObjectNameChanged(ptr unsafe.Pointer, objectName C.struct_Moc_PackedString) {
-	if signal := qt.GetSignal(ptr, "objectNameChanged"); signal != nil {
-		signal.(func(string))(cGoUnpackString(objectName))
-	}
-
-}
-
-//export callbackUi_Dialog9733cb_TimerEvent
-func callbackUi_Dialog9733cb_TimerEvent(ptr unsafe.Pointer, event unsafe.Pointer) {
-	if signal := qt.GetSignal(ptr, "timerEvent"); signal != nil {
-		signal.(func(*std_core.QTimerEvent))(std_core.NewQTimerEventFromPointer(event))
-	} else {
-		NewUi_DialogFromPointer(ptr).TimerEventDefault(std_core.NewQTimerEventFromPointer(event))
-	}
-}
-
-func (ptr *Ui_Dialog) TimerEventDefault(event std_core.QTimerEvent_ITF) {
-	if ptr.Pointer() != nil {
-		C.Ui_Dialog9733cb_TimerEventDefault(ptr.Pointer(), std_core.PointerFromQTimerEvent(event))
-	}
-}
-
-type Ui_SysTray_ITF interface {
-	std_core.QObject_ITF
-	Ui_SysTray_PTR() *Ui_SysTray
-}
-
-func (ptr *Ui_SysTray) Ui_SysTray_PTR() *Ui_SysTray {
-	return ptr
-}
-
-func (ptr *Ui_SysTray) Pointer() unsafe.Pointer {
-	if ptr != nil {
-		return ptr.QObject_PTR().Pointer()
-	}
-	return nil
-}
-
-func (ptr *Ui_SysTray) SetPointer(p unsafe.Pointer) {
-	if ptr != nil {
-		ptr.QObject_PTR().SetPointer(p)
-	}
-}
-
-func PointerFromUi_SysTray(ptr Ui_SysTray_ITF) unsafe.Pointer {
-	if ptr != nil {
-		return ptr.Ui_SysTray_PTR().Pointer()
-	}
-	return nil
-}
-
-func NewUi_SysTrayFromPointer(ptr unsafe.Pointer) (n *Ui_SysTray) {
-	if gPtr, ok := qt.Receive(ptr); !ok {
-		n = new(Ui_SysTray)
-		n.SetPointer(ptr)
-	} else {
-		switch deduced := gPtr.(type) {
-		case *Ui_SysTray:
-			n = deduced
-
-		case *std_core.QObject:
-			n = &Ui_SysTray{QObject: *deduced}
-
-		default:
-			n = new(Ui_SysTray)
-			n.SetPointer(ptr)
-		}
-	}
-	return
-}
-
-//export callbackUi_SysTray9733cb_Constructor
-func callbackUi_SysTray9733cb_Constructor(ptr unsafe.Pointer) {
-	this := NewUi_SysTrayFromPointer(ptr)
-	qt.Register(ptr, this)
-}
-
-func Ui_SysTray_QRegisterMetaType() int {
-	return int(int32(C.Ui_SysTray9733cb_Ui_SysTray9733cb_QRegisterMetaType()))
-}
-
-func (ptr *Ui_SysTray) QRegisterMetaType() int {
-	return int(int32(C.Ui_SysTray9733cb_Ui_SysTray9733cb_QRegisterMetaType()))
-}
-
-func Ui_SysTray_QRegisterMetaType2(typeName string) int {
-	var typeNameC *C.char
-	if typeName != "" {
-		typeNameC = C.CString(typeName)
-		defer C.free(unsafe.Pointer(typeNameC))
-	}
-	return int(int32(C.Ui_SysTray9733cb_Ui_SysTray9733cb_QRegisterMetaType2(typeNameC)))
-}
-
-func (ptr *Ui_SysTray) QRegisterMetaType2(typeName string) int {
-	var typeNameC *C.char
-	if typeName != "" {
-		typeNameC = C.CString(typeName)
-		defer C.free(unsafe.Pointer(typeNameC))
-	}
-	return int(int32(C.Ui_SysTray9733cb_Ui_SysTray9733cb_QRegisterMetaType2(typeNameC)))
-}
-
-func Ui_SysTray_QmlRegisterType() int {
-	return int(int32(C.Ui_SysTray9733cb_Ui_SysTray9733cb_QmlRegisterType()))
-}
-
-func (ptr *Ui_SysTray) QmlRegisterType() int {
-	return int(int32(C.Ui_SysTray9733cb_Ui_SysTray9733cb_QmlRegisterType()))
-}
-
-func Ui_SysTray_QmlRegisterType2(uri string, versionMajor int, versionMinor int, qmlName string) int {
-	var uriC *C.char
-	if uri != "" {
-		uriC = C.CString(uri)
-		defer C.free(unsafe.Pointer(uriC))
-	}
-	var qmlNameC *C.char
-	if qmlName != "" {
-		qmlNameC = C.CString(qmlName)
-		defer C.free(unsafe.Pointer(qmlNameC))
-	}
-	return int(int32(C.Ui_SysTray9733cb_Ui_SysTray9733cb_QmlRegisterType2(uriC, C.int(int32(versionMajor)), C.int(int32(versionMinor)), qmlNameC)))
-}
-
-func (ptr *Ui_SysTray) QmlRegisterType2(uri string, versionMajor int, versionMinor int, qmlName string) int {
-	var uriC *C.char
-	if uri != "" {
-		uriC = C.CString(uri)
-		defer C.free(unsafe.Pointer(uriC))
-	}
-	var qmlNameC *C.char
-	if qmlName != "" {
-		qmlNameC = C.CString(qmlName)
-		defer C.free(unsafe.Pointer(qmlNameC))
-	}
-	return int(int32(C.Ui_SysTray9733cb_Ui_SysTray9733cb_QmlRegisterType2(uriC, C.int(int32(versionMajor)), C.int(int32(versionMinor)), qmlNameC)))
-}
-
-func (ptr *Ui_SysTray) __dynamicPropertyNames_atList(i int) *std_core.QByteArray {
-	if ptr.Pointer() != nil {
-		tmpValue := std_core.NewQByteArrayFromPointer(C.Ui_SysTray9733cb___dynamicPropertyNames_atList(ptr.Pointer(), C.int(int32(i))))
-		runtime.SetFinalizer(tmpValue, (*std_core.QByteArray).DestroyQByteArray)
-		return tmpValue
-	}
-	return nil
-}
-
-func (ptr *Ui_SysTray) __dynamicPropertyNames_setList(i std_core.QByteArray_ITF) {
-	if ptr.Pointer() != nil {
-		C.Ui_SysTray9733cb___dynamicPropertyNames_setList(ptr.Pointer(), std_core.PointerFromQByteArray(i))
-	}
-}
-
-func (ptr *Ui_SysTray) __dynamicPropertyNames_newList() unsafe.Pointer {
-	return C.Ui_SysTray9733cb___dynamicPropertyNames_newList(ptr.Pointer())
-}
-
-func (ptr *Ui_SysTray) __findChildren_atList2(i int) *std_core.QObject {
-	if ptr.Pointer() != nil {
-		tmpValue := std_core.NewQObjectFromPointer(C.Ui_SysTray9733cb___findChildren_atList2(ptr.Pointer(), C.int(int32(i))))
-		if !qt.ExistsSignal(tmpValue.Pointer(), "destroyed") {
-			tmpValue.ConnectDestroyed(func(*std_core.QObject) { tmpValue.SetPointer(nil) })
-		}
-		return tmpValue
-	}
-	return nil
-}
-
-func (ptr *Ui_SysTray) __findChildren_setList2(i std_core.QObject_ITF) {
-	if ptr.Pointer() != nil {
-		C.Ui_SysTray9733cb___findChildren_setList2(ptr.Pointer(), std_core.PointerFromQObject(i))
-	}
-}
-
-func (ptr *Ui_SysTray) __findChildren_newList2() unsafe.Pointer {
-	return C.Ui_SysTray9733cb___findChildren_newList2(ptr.Pointer())
-}
-
-func (ptr *Ui_SysTray) __findChildren_atList3(i int) *std_core.QObject {
-	if ptr.Pointer() != nil {
-		tmpValue := std_core.NewQObjectFromPointer(C.Ui_SysTray9733cb___findChildren_atList3(ptr.Pointer(), C.int(int32(i))))
-		if !qt.ExistsSignal(tmpValue.Pointer(), "destroyed") {
-			tmpValue.ConnectDestroyed(func(*std_core.QObject) { tmpValue.SetPointer(nil) })
-		}
-		return tmpValue
-	}
-	return nil
-}
-
-func (ptr *Ui_SysTray) __findChildren_setList3(i std_core.QObject_ITF) {
-	if ptr.Pointer() != nil {
-		C.Ui_SysTray9733cb___findChildren_setList3(ptr.Pointer(), std_core.PointerFromQObject(i))
-	}
-}
-
-func (ptr *Ui_SysTray) __findChildren_newList3() unsafe.Pointer {
-	return C.Ui_SysTray9733cb___findChildren_newList3(ptr.Pointer())
-}
-
-func (ptr *Ui_SysTray) __findChildren_atList(i int) *std_core.QObject {
-	if ptr.Pointer() != nil {
-		tmpValue := std_core.NewQObjectFromPointer(C.Ui_SysTray9733cb___findChildren_atList(ptr.Pointer(), C.int(int32(i))))
-		if !qt.ExistsSignal(tmpValue.Pointer(), "destroyed") {
-			tmpValue.ConnectDestroyed(func(*std_core.QObject) { tmpValue.SetPointer(nil) })
-		}
-		return tmpValue
-	}
-	return nil
-}
-
-func (ptr *Ui_SysTray) __findChildren_setList(i std_core.QObject_ITF) {
-	if ptr.Pointer() != nil {
-		C.Ui_SysTray9733cb___findChildren_setList(ptr.Pointer(), std_core.PointerFromQObject(i))
-	}
-}
-
-func (ptr *Ui_SysTray) __findChildren_newList() unsafe.Pointer {
-	return C.Ui_SysTray9733cb___findChildren_newList(ptr.Pointer())
-}
-
-func (ptr *Ui_SysTray) __children_atList(i int) *std_core.QObject {
-	if ptr.Pointer() != nil {
-		tmpValue := std_core.NewQObjectFromPointer(C.Ui_SysTray9733cb___children_atList(ptr.Pointer(), C.int(int32(i))))
-		if !qt.ExistsSignal(tmpValue.Pointer(), "destroyed") {
-			tmpValue.ConnectDestroyed(func(*std_core.QObject) { tmpValue.SetPointer(nil) })
-		}
-		return tmpValue
-	}
-	return nil
-}
-
-func (ptr *Ui_SysTray) __children_setList(i std_core.QObject_ITF) {
-	if ptr.Pointer() != nil {
-		C.Ui_SysTray9733cb___children_setList(ptr.Pointer(), std_core.PointerFromQObject(i))
-	}
-}
-
-func (ptr *Ui_SysTray) __children_newList() unsafe.Pointer {
-	return C.Ui_SysTray9733cb___children_newList(ptr.Pointer())
-}
-
-func NewUi_SysTray(parent std_core.QObject_ITF) *Ui_SysTray {
-	tmpValue := NewUi_SysTrayFromPointer(C.Ui_SysTray9733cb_NewUi_SysTray(std_core.PointerFromQObject(parent)))
-	if !qt.ExistsSignal(tmpValue.Pointer(), "destroyed") {
-		tmpValue.ConnectDestroyed(func(*std_core.QObject) { tmpValue.SetPointer(nil) })
-	}
-	return tmpValue
-}
-
-//export callbackUi_SysTray9733cb_DestroyUi_SysTray
-func callbackUi_SysTray9733cb_DestroyUi_SysTray(ptr unsafe.Pointer) {
-	if signal := qt.GetSignal(ptr, "~Ui_SysTray"); signal != nil {
-		signal.(func())()
-	} else {
-		NewUi_SysTrayFromPointer(ptr).DestroyUi_SysTrayDefault()
-	}
-}
-
-func (ptr *Ui_SysTray) ConnectDestroyUi_SysTray(f func()) {
-	if ptr.Pointer() != nil {
-
-		if signal := qt.LendSignal(ptr.Pointer(), "~Ui_SysTray"); signal != nil {
-			qt.ConnectSignal(ptr.Pointer(), "~Ui_SysTray", func() {
-				signal.(func())()
-				f()
-			})
-		} else {
-			qt.ConnectSignal(ptr.Pointer(), "~Ui_SysTray", f)
-		}
-	}
-}
-
-func (ptr *Ui_SysTray) DisconnectDestroyUi_SysTray() {
-	if ptr.Pointer() != nil {
-
-		qt.DisconnectSignal(ptr.Pointer(), "~Ui_SysTray")
-	}
-}
-
-func (ptr *Ui_SysTray) DestroyUi_SysTray() {
-	if ptr.Pointer() != nil {
-		C.Ui_SysTray9733cb_DestroyUi_SysTray(ptr.Pointer())
-		ptr.SetPointer(nil)
-		runtime.SetFinalizer(ptr, nil)
-	}
-}
-
-func (ptr *Ui_SysTray) DestroyUi_SysTrayDefault() {
-	if ptr.Pointer() != nil {
-		C.Ui_SysTray9733cb_DestroyUi_SysTrayDefault(ptr.Pointer())
-		ptr.SetPointer(nil)
-		runtime.SetFinalizer(ptr, nil)
-	}
-}
-
-//export callbackUi_SysTray9733cb_Event
-func callbackUi_SysTray9733cb_Event(ptr unsafe.Pointer, e unsafe.Pointer) C.char {
-	if signal := qt.GetSignal(ptr, "event"); signal != nil {
-		return C.char(int8(qt.GoBoolToInt(signal.(func(*std_core.QEvent) bool)(std_core.NewQEventFromPointer(e)))))
-	}
-
-	return C.char(int8(qt.GoBoolToInt(NewUi_SysTrayFromPointer(ptr).EventDefault(std_core.NewQEventFromPointer(e)))))
-}
-
-func (ptr *Ui_SysTray) EventDefault(e std_core.QEvent_ITF) bool {
-	if ptr.Pointer() != nil {
-		return C.Ui_SysTray9733cb_EventDefault(ptr.Pointer(), std_core.PointerFromQEvent(e)) != 0
-	}
-	return false
-}
-
-//export callbackUi_SysTray9733cb_EventFilter
-func callbackUi_SysTray9733cb_EventFilter(ptr unsafe.Pointer, watched unsafe.Pointer, event unsafe.Pointer) C.char {
-	if signal := qt.GetSignal(ptr, "eventFilter"); signal != nil {
-		return C.char(int8(qt.GoBoolToInt(signal.(func(*std_core.QObject, *std_core.QEvent) bool)(std_core.NewQObjectFromPointer(watched), std_core.NewQEventFromPointer(event)))))
-	}
-
-	return C.char(int8(qt.GoBoolToInt(NewUi_SysTrayFromPointer(ptr).EventFilterDefault(std_core.NewQObjectFromPointer(watched), std_core.NewQEventFromPointer(event)))))
-}
-
-func (ptr *Ui_SysTray) EventFilterDefault(watched std_core.QObject_ITF, event std_core.QEvent_ITF) bool {
-	if ptr.Pointer() != nil {
-		return C.Ui_SysTray9733cb_EventFilterDefault(ptr.Pointer(), std_core.PointerFromQObject(watched), std_core.PointerFromQEvent(event)) != 0
-	}
-	return false
-}
-
-//export callbackUi_SysTray9733cb_ChildEvent
-func callbackUi_SysTray9733cb_ChildEvent(ptr unsafe.Pointer, event unsafe.Pointer) {
-	if signal := qt.GetSignal(ptr, "childEvent"); signal != nil {
-		signal.(func(*std_core.QChildEvent))(std_core.NewQChildEventFromPointer(event))
-	} else {
-		NewUi_SysTrayFromPointer(ptr).ChildEventDefault(std_core.NewQChildEventFromPointer(event))
-	}
-}
-
-func (ptr *Ui_SysTray) ChildEventDefault(event std_core.QChildEvent_ITF) {
-	if ptr.Pointer() != nil {
-		C.Ui_SysTray9733cb_ChildEventDefault(ptr.Pointer(), std_core.PointerFromQChildEvent(event))
-	}
-}
-
-//export callbackUi_SysTray9733cb_ConnectNotify
-func callbackUi_SysTray9733cb_ConnectNotify(ptr unsafe.Pointer, sign unsafe.Pointer) {
-	if signal := qt.GetSignal(ptr, "connectNotify"); signal != nil {
-		signal.(func(*std_core.QMetaMethod))(std_core.NewQMetaMethodFromPointer(sign))
-	} else {
-		NewUi_SysTrayFromPointer(ptr).ConnectNotifyDefault(std_core.NewQMetaMethodFromPointer(sign))
-	}
-}
-
-func (ptr *Ui_SysTray) ConnectNotifyDefault(sign std_core.QMetaMethod_ITF) {
-	if ptr.Pointer() != nil {
-		C.Ui_SysTray9733cb_ConnectNotifyDefault(ptr.Pointer(), std_core.PointerFromQMetaMethod(sign))
-	}
-}
-
-//export callbackUi_SysTray9733cb_CustomEvent
-func callbackUi_SysTray9733cb_CustomEvent(ptr unsafe.Pointer, event unsafe.Pointer) {
-	if signal := qt.GetSignal(ptr, "customEvent"); signal != nil {
-		signal.(func(*std_core.QEvent))(std_core.NewQEventFromPointer(event))
-	} else {
-		NewUi_SysTrayFromPointer(ptr).CustomEventDefault(std_core.NewQEventFromPointer(event))
-	}
-}
-
-func (ptr *Ui_SysTray) CustomEventDefault(event std_core.QEvent_ITF) {
-	if ptr.Pointer() != nil {
-		C.Ui_SysTray9733cb_CustomEventDefault(ptr.Pointer(), std_core.PointerFromQEvent(event))
-	}
-}
-
-//export callbackUi_SysTray9733cb_DeleteLater
-func callbackUi_SysTray9733cb_DeleteLater(ptr unsafe.Pointer) {
-	if signal := qt.GetSignal(ptr, "deleteLater"); signal != nil {
-		signal.(func())()
-	} else {
-		NewUi_SysTrayFromPointer(ptr).DeleteLaterDefault()
-	}
-}
-
-func (ptr *Ui_SysTray) DeleteLaterDefault() {
-	if ptr.Pointer() != nil {
-		C.Ui_SysTray9733cb_DeleteLaterDefault(ptr.Pointer())
-		ptr.SetPointer(nil)
-		runtime.SetFinalizer(ptr, nil)
-	}
-}
-
-//export callbackUi_SysTray9733cb_Destroyed
-func callbackUi_SysTray9733cb_Destroyed(ptr unsafe.Pointer, obj unsafe.Pointer) {
-	if signal := qt.GetSignal(ptr, "destroyed"); signal != nil {
-		signal.(func(*std_core.QObject))(std_core.NewQObjectFromPointer(obj))
-	}
-
-}
-
-//export callbackUi_SysTray9733cb_DisconnectNotify
-func callbackUi_SysTray9733cb_DisconnectNotify(ptr unsafe.Pointer, sign unsafe.Pointer) {
-	if signal := qt.GetSignal(ptr, "disconnectNotify"); signal != nil {
-		signal.(func(*std_core.QMetaMethod))(std_core.NewQMetaMethodFromPointer(sign))
-	} else {
-		NewUi_SysTrayFromPointer(ptr).DisconnectNotifyDefault(std_core.NewQMetaMethodFromPointer(sign))
-	}
-}
-
-func (ptr *Ui_SysTray) DisconnectNotifyDefault(sign std_core.QMetaMethod_ITF) {
-	if ptr.Pointer() != nil {
-		C.Ui_SysTray9733cb_DisconnectNotifyDefault(ptr.Pointer(), std_core.PointerFromQMetaMethod(sign))
-	}
-}
-
-//export callbackUi_SysTray9733cb_ObjectNameChanged
-func callbackUi_SysTray9733cb_ObjectNameChanged(ptr unsafe.Pointer, objectName C.struct_Moc_PackedString) {
-	if signal := qt.GetSignal(ptr, "objectNameChanged"); signal != nil {
-		signal.(func(string))(cGoUnpackString(objectName))
-	}
-
-}
-
-//export callbackUi_SysTray9733cb_TimerEvent
-func callbackUi_SysTray9733cb_TimerEvent(ptr unsafe.Pointer, event unsafe.Pointer) {
-	if signal := qt.GetSignal(ptr, "timerEvent"); signal != nil {
-		signal.(func(*std_core.QTimerEvent))(std_core.NewQTimerEventFromPointer(event))
-	} else {
-		NewUi_SysTrayFromPointer(ptr).TimerEventDefault(std_core.NewQTimerEventFromPointer(event))
-	}
-}
-
-func (ptr *Ui_SysTray) TimerEventDefault(event std_core.QTimerEvent_ITF) {
-	if ptr.Pointer() != nil {
-		C.Ui_SysTray9733cb_TimerEventDefault(ptr.Pointer(), std_core.PointerFromQTimerEvent(event))
-	}
-}
-
 type AppDoingList_ITF interface {
 	std_widgets.QApplication_ITF
 	AppDoingList_PTR() *AppDoingList
@@ -942,14 +79,14 @@ func callbackAppDoingList9733cb_Constructor(ptr unsafe.Pointer) {
 }
 
 //export callbackAppDoingList9733cb_QuitApp
-func callbackAppDoingList9733cb_QuitApp(ptr unsafe.Pointer) {
+func callbackAppDoingList9733cb_QuitApp(ptr unsafe.Pointer, ui unsafe.Pointer, app unsafe.Pointer, mainDialog unsafe.Pointer) {
 	if signal := qt.GetSignal(ptr, "quitApp"); signal != nil {
-		signal.(func())()
+		signal.(func(*Ui_Dialog, *AppDoingList, *std_widgets.QDialog))(NewUi_DialogFromPointer(ui), NewAppDoingListFromPointer(app), std_widgets.NewQDialogFromPointer(mainDialog))
 	}
 
 }
 
-func (ptr *AppDoingList) ConnectQuitApp(f func()) {
+func (ptr *AppDoingList) ConnectQuitApp(f func(ui *Ui_Dialog, app *AppDoingList, mainDialog *std_widgets.QDialog)) {
 	if ptr.Pointer() != nil {
 
 		if !qt.ExistsSignal(ptr.Pointer(), "quitApp") {
@@ -957,9 +94,9 @@ func (ptr *AppDoingList) ConnectQuitApp(f func()) {
 		}
 
 		if signal := qt.LendSignal(ptr.Pointer(), "quitApp"); signal != nil {
-			qt.ConnectSignal(ptr.Pointer(), "quitApp", func() {
-				signal.(func())()
-				f()
+			qt.ConnectSignal(ptr.Pointer(), "quitApp", func(ui *Ui_Dialog, app *AppDoingList, mainDialog *std_widgets.QDialog) {
+				signal.(func(*Ui_Dialog, *AppDoingList, *std_widgets.QDialog))(ui, app, mainDialog)
+				f(ui, app, mainDialog)
 			})
 		} else {
 			qt.ConnectSignal(ptr.Pointer(), "quitApp", f)
@@ -974,21 +111,21 @@ func (ptr *AppDoingList) DisconnectQuitApp() {
 	}
 }
 
-func (ptr *AppDoingList) QuitApp() {
+func (ptr *AppDoingList) QuitApp(ui Ui_Dialog_ITF, app AppDoingList_ITF, mainDialog std_widgets.QDialog_ITF) {
 	if ptr.Pointer() != nil {
-		C.AppDoingList9733cb_QuitApp(ptr.Pointer())
+		C.AppDoingList9733cb_QuitApp(ptr.Pointer(), PointerFromUi_Dialog(ui), PointerFromAppDoingList(app), std_widgets.PointerFromQDialog(mainDialog))
 	}
 }
 
 //export callbackAppDoingList9733cb_ActivateApp
-func callbackAppDoingList9733cb_ActivateApp(ptr unsafe.Pointer) {
+func callbackAppDoingList9733cb_ActivateApp(ptr unsafe.Pointer, ui unsafe.Pointer, app unsafe.Pointer, mainDialog unsafe.Pointer) {
 	if signal := qt.GetSignal(ptr, "activateApp"); signal != nil {
-		signal.(func())()
+		signal.(func(*Ui_Dialog, *AppDoingList, *std_widgets.QDialog))(NewUi_DialogFromPointer(ui), NewAppDoingListFromPointer(app), std_widgets.NewQDialogFromPointer(mainDialog))
 	}
 
 }
 
-func (ptr *AppDoingList) ConnectActivateApp(f func()) {
+func (ptr *AppDoingList) ConnectActivateApp(f func(ui *Ui_Dialog, app *AppDoingList, mainDialog *std_widgets.QDialog)) {
 	if ptr.Pointer() != nil {
 
 		if !qt.ExistsSignal(ptr.Pointer(), "activateApp") {
@@ -996,9 +133,9 @@ func (ptr *AppDoingList) ConnectActivateApp(f func()) {
 		}
 
 		if signal := qt.LendSignal(ptr.Pointer(), "activateApp"); signal != nil {
-			qt.ConnectSignal(ptr.Pointer(), "activateApp", func() {
-				signal.(func())()
-				f()
+			qt.ConnectSignal(ptr.Pointer(), "activateApp", func(ui *Ui_Dialog, app *AppDoingList, mainDialog *std_widgets.QDialog) {
+				signal.(func(*Ui_Dialog, *AppDoingList, *std_widgets.QDialog))(ui, app, mainDialog)
+				f(ui, app, mainDialog)
 			})
 		} else {
 			qt.ConnectSignal(ptr.Pointer(), "activateApp", f)
@@ -1013,9 +150,9 @@ func (ptr *AppDoingList) DisconnectActivateApp() {
 	}
 }
 
-func (ptr *AppDoingList) ActivateApp() {
+func (ptr *AppDoingList) ActivateApp(ui Ui_Dialog_ITF, app AppDoingList_ITF, mainDialog std_widgets.QDialog_ITF) {
 	if ptr.Pointer() != nil {
-		C.AppDoingList9733cb_ActivateApp(ptr.Pointer())
+		C.AppDoingList9733cb_ActivateApp(ptr.Pointer(), PointerFromUi_Dialog(ui), PointerFromAppDoingList(app), std_widgets.PointerFromQDialog(mainDialog))
 	}
 }
 
@@ -4050,4 +3187,867 @@ func callbackDoingList9733cb_ObjectNameChanged(ptr unsafe.Pointer, objectName C.
 		signal.(func(string))(cGoUnpackString(objectName))
 	}
 
+}
+
+type Ui_Dialog_ITF interface {
+	std_core.QObject_ITF
+	Ui_Dialog_PTR() *Ui_Dialog
+}
+
+func (ptr *Ui_Dialog) Ui_Dialog_PTR() *Ui_Dialog {
+	return ptr
+}
+
+func (ptr *Ui_Dialog) Pointer() unsafe.Pointer {
+	if ptr != nil {
+		return ptr.QObject_PTR().Pointer()
+	}
+	return nil
+}
+
+func (ptr *Ui_Dialog) SetPointer(p unsafe.Pointer) {
+	if ptr != nil {
+		ptr.QObject_PTR().SetPointer(p)
+	}
+}
+
+func PointerFromUi_Dialog(ptr Ui_Dialog_ITF) unsafe.Pointer {
+	if ptr != nil {
+		return ptr.Ui_Dialog_PTR().Pointer()
+	}
+	return nil
+}
+
+func NewUi_DialogFromPointer(ptr unsafe.Pointer) (n *Ui_Dialog) {
+	if gPtr, ok := qt.Receive(ptr); !ok {
+		n = new(Ui_Dialog)
+		n.SetPointer(ptr)
+	} else {
+		switch deduced := gPtr.(type) {
+		case *Ui_Dialog:
+			n = deduced
+
+		case *std_core.QObject:
+			n = &Ui_Dialog{QObject: *deduced}
+
+		default:
+			n = new(Ui_Dialog)
+			n.SetPointer(ptr)
+		}
+	}
+	return
+}
+
+//export callbackUi_Dialog9733cb_Constructor
+func callbackUi_Dialog9733cb_Constructor(ptr unsafe.Pointer) {
+	this := NewUi_DialogFromPointer(ptr)
+	qt.Register(ptr, this)
+}
+
+//export callbackUi_Dialog9733cb_ActivateEvent
+func callbackUi_Dialog9733cb_ActivateEvent(ptr unsafe.Pointer, v0 unsafe.Pointer, v1 unsafe.Pointer) {
+	if signal := qt.GetSignal(ptr, "activateEvent"); signal != nil {
+		signal.(func(*std_widgets.QApplication, *std_widgets.QDialog))(std_widgets.NewQApplicationFromPointer(v0), std_widgets.NewQDialogFromPointer(v1))
+	}
+
+}
+
+func (ptr *Ui_Dialog) ConnectActivateEvent(f func(v0 *std_widgets.QApplication, v1 *std_widgets.QDialog)) {
+	if ptr.Pointer() != nil {
+
+		if signal := qt.LendSignal(ptr.Pointer(), "activateEvent"); signal != nil {
+			qt.ConnectSignal(ptr.Pointer(), "activateEvent", func(v0 *std_widgets.QApplication, v1 *std_widgets.QDialog) {
+				signal.(func(*std_widgets.QApplication, *std_widgets.QDialog))(v0, v1)
+				f(v0, v1)
+			})
+		} else {
+			qt.ConnectSignal(ptr.Pointer(), "activateEvent", f)
+		}
+	}
+}
+
+func (ptr *Ui_Dialog) DisconnectActivateEvent() {
+	if ptr.Pointer() != nil {
+
+		qt.DisconnectSignal(ptr.Pointer(), "activateEvent")
+	}
+}
+
+func (ptr *Ui_Dialog) ActivateEvent(v0 std_widgets.QApplication_ITF, v1 std_widgets.QDialog_ITF) {
+	if ptr.Pointer() != nil {
+		C.Ui_Dialog9733cb_ActivateEvent(ptr.Pointer(), std_widgets.PointerFromQApplication(v0), std_widgets.PointerFromQDialog(v1))
+	}
+}
+
+func Ui_Dialog_QRegisterMetaType() int {
+	return int(int32(C.Ui_Dialog9733cb_Ui_Dialog9733cb_QRegisterMetaType()))
+}
+
+func (ptr *Ui_Dialog) QRegisterMetaType() int {
+	return int(int32(C.Ui_Dialog9733cb_Ui_Dialog9733cb_QRegisterMetaType()))
+}
+
+func Ui_Dialog_QRegisterMetaType2(typeName string) int {
+	var typeNameC *C.char
+	if typeName != "" {
+		typeNameC = C.CString(typeName)
+		defer C.free(unsafe.Pointer(typeNameC))
+	}
+	return int(int32(C.Ui_Dialog9733cb_Ui_Dialog9733cb_QRegisterMetaType2(typeNameC)))
+}
+
+func (ptr *Ui_Dialog) QRegisterMetaType2(typeName string) int {
+	var typeNameC *C.char
+	if typeName != "" {
+		typeNameC = C.CString(typeName)
+		defer C.free(unsafe.Pointer(typeNameC))
+	}
+	return int(int32(C.Ui_Dialog9733cb_Ui_Dialog9733cb_QRegisterMetaType2(typeNameC)))
+}
+
+func Ui_Dialog_QmlRegisterType() int {
+	return int(int32(C.Ui_Dialog9733cb_Ui_Dialog9733cb_QmlRegisterType()))
+}
+
+func (ptr *Ui_Dialog) QmlRegisterType() int {
+	return int(int32(C.Ui_Dialog9733cb_Ui_Dialog9733cb_QmlRegisterType()))
+}
+
+func Ui_Dialog_QmlRegisterType2(uri string, versionMajor int, versionMinor int, qmlName string) int {
+	var uriC *C.char
+	if uri != "" {
+		uriC = C.CString(uri)
+		defer C.free(unsafe.Pointer(uriC))
+	}
+	var qmlNameC *C.char
+	if qmlName != "" {
+		qmlNameC = C.CString(qmlName)
+		defer C.free(unsafe.Pointer(qmlNameC))
+	}
+	return int(int32(C.Ui_Dialog9733cb_Ui_Dialog9733cb_QmlRegisterType2(uriC, C.int(int32(versionMajor)), C.int(int32(versionMinor)), qmlNameC)))
+}
+
+func (ptr *Ui_Dialog) QmlRegisterType2(uri string, versionMajor int, versionMinor int, qmlName string) int {
+	var uriC *C.char
+	if uri != "" {
+		uriC = C.CString(uri)
+		defer C.free(unsafe.Pointer(uriC))
+	}
+	var qmlNameC *C.char
+	if qmlName != "" {
+		qmlNameC = C.CString(qmlName)
+		defer C.free(unsafe.Pointer(qmlNameC))
+	}
+	return int(int32(C.Ui_Dialog9733cb_Ui_Dialog9733cb_QmlRegisterType2(uriC, C.int(int32(versionMajor)), C.int(int32(versionMinor)), qmlNameC)))
+}
+
+func (ptr *Ui_Dialog) __dynamicPropertyNames_atList(i int) *std_core.QByteArray {
+	if ptr.Pointer() != nil {
+		tmpValue := std_core.NewQByteArrayFromPointer(C.Ui_Dialog9733cb___dynamicPropertyNames_atList(ptr.Pointer(), C.int(int32(i))))
+		runtime.SetFinalizer(tmpValue, (*std_core.QByteArray).DestroyQByteArray)
+		return tmpValue
+	}
+	return nil
+}
+
+func (ptr *Ui_Dialog) __dynamicPropertyNames_setList(i std_core.QByteArray_ITF) {
+	if ptr.Pointer() != nil {
+		C.Ui_Dialog9733cb___dynamicPropertyNames_setList(ptr.Pointer(), std_core.PointerFromQByteArray(i))
+	}
+}
+
+func (ptr *Ui_Dialog) __dynamicPropertyNames_newList() unsafe.Pointer {
+	return C.Ui_Dialog9733cb___dynamicPropertyNames_newList(ptr.Pointer())
+}
+
+func (ptr *Ui_Dialog) __findChildren_atList2(i int) *std_core.QObject {
+	if ptr.Pointer() != nil {
+		tmpValue := std_core.NewQObjectFromPointer(C.Ui_Dialog9733cb___findChildren_atList2(ptr.Pointer(), C.int(int32(i))))
+		if !qt.ExistsSignal(tmpValue.Pointer(), "destroyed") {
+			tmpValue.ConnectDestroyed(func(*std_core.QObject) { tmpValue.SetPointer(nil) })
+		}
+		return tmpValue
+	}
+	return nil
+}
+
+func (ptr *Ui_Dialog) __findChildren_setList2(i std_core.QObject_ITF) {
+	if ptr.Pointer() != nil {
+		C.Ui_Dialog9733cb___findChildren_setList2(ptr.Pointer(), std_core.PointerFromQObject(i))
+	}
+}
+
+func (ptr *Ui_Dialog) __findChildren_newList2() unsafe.Pointer {
+	return C.Ui_Dialog9733cb___findChildren_newList2(ptr.Pointer())
+}
+
+func (ptr *Ui_Dialog) __findChildren_atList3(i int) *std_core.QObject {
+	if ptr.Pointer() != nil {
+		tmpValue := std_core.NewQObjectFromPointer(C.Ui_Dialog9733cb___findChildren_atList3(ptr.Pointer(), C.int(int32(i))))
+		if !qt.ExistsSignal(tmpValue.Pointer(), "destroyed") {
+			tmpValue.ConnectDestroyed(func(*std_core.QObject) { tmpValue.SetPointer(nil) })
+		}
+		return tmpValue
+	}
+	return nil
+}
+
+func (ptr *Ui_Dialog) __findChildren_setList3(i std_core.QObject_ITF) {
+	if ptr.Pointer() != nil {
+		C.Ui_Dialog9733cb___findChildren_setList3(ptr.Pointer(), std_core.PointerFromQObject(i))
+	}
+}
+
+func (ptr *Ui_Dialog) __findChildren_newList3() unsafe.Pointer {
+	return C.Ui_Dialog9733cb___findChildren_newList3(ptr.Pointer())
+}
+
+func (ptr *Ui_Dialog) __findChildren_atList(i int) *std_core.QObject {
+	if ptr.Pointer() != nil {
+		tmpValue := std_core.NewQObjectFromPointer(C.Ui_Dialog9733cb___findChildren_atList(ptr.Pointer(), C.int(int32(i))))
+		if !qt.ExistsSignal(tmpValue.Pointer(), "destroyed") {
+			tmpValue.ConnectDestroyed(func(*std_core.QObject) { tmpValue.SetPointer(nil) })
+		}
+		return tmpValue
+	}
+	return nil
+}
+
+func (ptr *Ui_Dialog) __findChildren_setList(i std_core.QObject_ITF) {
+	if ptr.Pointer() != nil {
+		C.Ui_Dialog9733cb___findChildren_setList(ptr.Pointer(), std_core.PointerFromQObject(i))
+	}
+}
+
+func (ptr *Ui_Dialog) __findChildren_newList() unsafe.Pointer {
+	return C.Ui_Dialog9733cb___findChildren_newList(ptr.Pointer())
+}
+
+func (ptr *Ui_Dialog) __children_atList(i int) *std_core.QObject {
+	if ptr.Pointer() != nil {
+		tmpValue := std_core.NewQObjectFromPointer(C.Ui_Dialog9733cb___children_atList(ptr.Pointer(), C.int(int32(i))))
+		if !qt.ExistsSignal(tmpValue.Pointer(), "destroyed") {
+			tmpValue.ConnectDestroyed(func(*std_core.QObject) { tmpValue.SetPointer(nil) })
+		}
+		return tmpValue
+	}
+	return nil
+}
+
+func (ptr *Ui_Dialog) __children_setList(i std_core.QObject_ITF) {
+	if ptr.Pointer() != nil {
+		C.Ui_Dialog9733cb___children_setList(ptr.Pointer(), std_core.PointerFromQObject(i))
+	}
+}
+
+func (ptr *Ui_Dialog) __children_newList() unsafe.Pointer {
+	return C.Ui_Dialog9733cb___children_newList(ptr.Pointer())
+}
+
+func NewUi_Dialog(parent std_core.QObject_ITF) *Ui_Dialog {
+	tmpValue := NewUi_DialogFromPointer(C.Ui_Dialog9733cb_NewUi_Dialog(std_core.PointerFromQObject(parent)))
+	if !qt.ExistsSignal(tmpValue.Pointer(), "destroyed") {
+		tmpValue.ConnectDestroyed(func(*std_core.QObject) { tmpValue.SetPointer(nil) })
+	}
+	return tmpValue
+}
+
+//export callbackUi_Dialog9733cb_DestroyUi_Dialog
+func callbackUi_Dialog9733cb_DestroyUi_Dialog(ptr unsafe.Pointer) {
+	if signal := qt.GetSignal(ptr, "~Ui_Dialog"); signal != nil {
+		signal.(func())()
+	} else {
+		NewUi_DialogFromPointer(ptr).DestroyUi_DialogDefault()
+	}
+}
+
+func (ptr *Ui_Dialog) ConnectDestroyUi_Dialog(f func()) {
+	if ptr.Pointer() != nil {
+
+		if signal := qt.LendSignal(ptr.Pointer(), "~Ui_Dialog"); signal != nil {
+			qt.ConnectSignal(ptr.Pointer(), "~Ui_Dialog", func() {
+				signal.(func())()
+				f()
+			})
+		} else {
+			qt.ConnectSignal(ptr.Pointer(), "~Ui_Dialog", f)
+		}
+	}
+}
+
+func (ptr *Ui_Dialog) DisconnectDestroyUi_Dialog() {
+	if ptr.Pointer() != nil {
+
+		qt.DisconnectSignal(ptr.Pointer(), "~Ui_Dialog")
+	}
+}
+
+func (ptr *Ui_Dialog) DestroyUi_Dialog() {
+	if ptr.Pointer() != nil {
+		C.Ui_Dialog9733cb_DestroyUi_Dialog(ptr.Pointer())
+		ptr.SetPointer(nil)
+		runtime.SetFinalizer(ptr, nil)
+	}
+}
+
+func (ptr *Ui_Dialog) DestroyUi_DialogDefault() {
+	if ptr.Pointer() != nil {
+		C.Ui_Dialog9733cb_DestroyUi_DialogDefault(ptr.Pointer())
+		ptr.SetPointer(nil)
+		runtime.SetFinalizer(ptr, nil)
+	}
+}
+
+//export callbackUi_Dialog9733cb_Event
+func callbackUi_Dialog9733cb_Event(ptr unsafe.Pointer, e unsafe.Pointer) C.char {
+	if signal := qt.GetSignal(ptr, "event"); signal != nil {
+		return C.char(int8(qt.GoBoolToInt(signal.(func(*std_core.QEvent) bool)(std_core.NewQEventFromPointer(e)))))
+	}
+
+	return C.char(int8(qt.GoBoolToInt(NewUi_DialogFromPointer(ptr).EventDefault(std_core.NewQEventFromPointer(e)))))
+}
+
+func (ptr *Ui_Dialog) EventDefault(e std_core.QEvent_ITF) bool {
+	if ptr.Pointer() != nil {
+		return C.Ui_Dialog9733cb_EventDefault(ptr.Pointer(), std_core.PointerFromQEvent(e)) != 0
+	}
+	return false
+}
+
+//export callbackUi_Dialog9733cb_EventFilter
+func callbackUi_Dialog9733cb_EventFilter(ptr unsafe.Pointer, watched unsafe.Pointer, event unsafe.Pointer) C.char {
+	if signal := qt.GetSignal(ptr, "eventFilter"); signal != nil {
+		return C.char(int8(qt.GoBoolToInt(signal.(func(*std_core.QObject, *std_core.QEvent) bool)(std_core.NewQObjectFromPointer(watched), std_core.NewQEventFromPointer(event)))))
+	}
+
+	return C.char(int8(qt.GoBoolToInt(NewUi_DialogFromPointer(ptr).EventFilterDefault(std_core.NewQObjectFromPointer(watched), std_core.NewQEventFromPointer(event)))))
+}
+
+func (ptr *Ui_Dialog) EventFilterDefault(watched std_core.QObject_ITF, event std_core.QEvent_ITF) bool {
+	if ptr.Pointer() != nil {
+		return C.Ui_Dialog9733cb_EventFilterDefault(ptr.Pointer(), std_core.PointerFromQObject(watched), std_core.PointerFromQEvent(event)) != 0
+	}
+	return false
+}
+
+//export callbackUi_Dialog9733cb_ChildEvent
+func callbackUi_Dialog9733cb_ChildEvent(ptr unsafe.Pointer, event unsafe.Pointer) {
+	if signal := qt.GetSignal(ptr, "childEvent"); signal != nil {
+		signal.(func(*std_core.QChildEvent))(std_core.NewQChildEventFromPointer(event))
+	} else {
+		NewUi_DialogFromPointer(ptr).ChildEventDefault(std_core.NewQChildEventFromPointer(event))
+	}
+}
+
+func (ptr *Ui_Dialog) ChildEventDefault(event std_core.QChildEvent_ITF) {
+	if ptr.Pointer() != nil {
+		C.Ui_Dialog9733cb_ChildEventDefault(ptr.Pointer(), std_core.PointerFromQChildEvent(event))
+	}
+}
+
+//export callbackUi_Dialog9733cb_ConnectNotify
+func callbackUi_Dialog9733cb_ConnectNotify(ptr unsafe.Pointer, sign unsafe.Pointer) {
+	if signal := qt.GetSignal(ptr, "connectNotify"); signal != nil {
+		signal.(func(*std_core.QMetaMethod))(std_core.NewQMetaMethodFromPointer(sign))
+	} else {
+		NewUi_DialogFromPointer(ptr).ConnectNotifyDefault(std_core.NewQMetaMethodFromPointer(sign))
+	}
+}
+
+func (ptr *Ui_Dialog) ConnectNotifyDefault(sign std_core.QMetaMethod_ITF) {
+	if ptr.Pointer() != nil {
+		C.Ui_Dialog9733cb_ConnectNotifyDefault(ptr.Pointer(), std_core.PointerFromQMetaMethod(sign))
+	}
+}
+
+//export callbackUi_Dialog9733cb_CustomEvent
+func callbackUi_Dialog9733cb_CustomEvent(ptr unsafe.Pointer, event unsafe.Pointer) {
+	if signal := qt.GetSignal(ptr, "customEvent"); signal != nil {
+		signal.(func(*std_core.QEvent))(std_core.NewQEventFromPointer(event))
+	} else {
+		NewUi_DialogFromPointer(ptr).CustomEventDefault(std_core.NewQEventFromPointer(event))
+	}
+}
+
+func (ptr *Ui_Dialog) CustomEventDefault(event std_core.QEvent_ITF) {
+	if ptr.Pointer() != nil {
+		C.Ui_Dialog9733cb_CustomEventDefault(ptr.Pointer(), std_core.PointerFromQEvent(event))
+	}
+}
+
+//export callbackUi_Dialog9733cb_DeleteLater
+func callbackUi_Dialog9733cb_DeleteLater(ptr unsafe.Pointer) {
+	if signal := qt.GetSignal(ptr, "deleteLater"); signal != nil {
+		signal.(func())()
+	} else {
+		NewUi_DialogFromPointer(ptr).DeleteLaterDefault()
+	}
+}
+
+func (ptr *Ui_Dialog) DeleteLaterDefault() {
+	if ptr.Pointer() != nil {
+		C.Ui_Dialog9733cb_DeleteLaterDefault(ptr.Pointer())
+		ptr.SetPointer(nil)
+		runtime.SetFinalizer(ptr, nil)
+	}
+}
+
+//export callbackUi_Dialog9733cb_Destroyed
+func callbackUi_Dialog9733cb_Destroyed(ptr unsafe.Pointer, obj unsafe.Pointer) {
+	if signal := qt.GetSignal(ptr, "destroyed"); signal != nil {
+		signal.(func(*std_core.QObject))(std_core.NewQObjectFromPointer(obj))
+	}
+
+}
+
+//export callbackUi_Dialog9733cb_DisconnectNotify
+func callbackUi_Dialog9733cb_DisconnectNotify(ptr unsafe.Pointer, sign unsafe.Pointer) {
+	if signal := qt.GetSignal(ptr, "disconnectNotify"); signal != nil {
+		signal.(func(*std_core.QMetaMethod))(std_core.NewQMetaMethodFromPointer(sign))
+	} else {
+		NewUi_DialogFromPointer(ptr).DisconnectNotifyDefault(std_core.NewQMetaMethodFromPointer(sign))
+	}
+}
+
+func (ptr *Ui_Dialog) DisconnectNotifyDefault(sign std_core.QMetaMethod_ITF) {
+	if ptr.Pointer() != nil {
+		C.Ui_Dialog9733cb_DisconnectNotifyDefault(ptr.Pointer(), std_core.PointerFromQMetaMethod(sign))
+	}
+}
+
+//export callbackUi_Dialog9733cb_ObjectNameChanged
+func callbackUi_Dialog9733cb_ObjectNameChanged(ptr unsafe.Pointer, objectName C.struct_Moc_PackedString) {
+	if signal := qt.GetSignal(ptr, "objectNameChanged"); signal != nil {
+		signal.(func(string))(cGoUnpackString(objectName))
+	}
+
+}
+
+//export callbackUi_Dialog9733cb_TimerEvent
+func callbackUi_Dialog9733cb_TimerEvent(ptr unsafe.Pointer, event unsafe.Pointer) {
+	if signal := qt.GetSignal(ptr, "timerEvent"); signal != nil {
+		signal.(func(*std_core.QTimerEvent))(std_core.NewQTimerEventFromPointer(event))
+	} else {
+		NewUi_DialogFromPointer(ptr).TimerEventDefault(std_core.NewQTimerEventFromPointer(event))
+	}
+}
+
+func (ptr *Ui_Dialog) TimerEventDefault(event std_core.QTimerEvent_ITF) {
+	if ptr.Pointer() != nil {
+		C.Ui_Dialog9733cb_TimerEventDefault(ptr.Pointer(), std_core.PointerFromQTimerEvent(event))
+	}
+}
+
+type Ui_SysTray_ITF interface {
+	std_core.QObject_ITF
+	Ui_SysTray_PTR() *Ui_SysTray
+}
+
+func (ptr *Ui_SysTray) Ui_SysTray_PTR() *Ui_SysTray {
+	return ptr
+}
+
+func (ptr *Ui_SysTray) Pointer() unsafe.Pointer {
+	if ptr != nil {
+		return ptr.QObject_PTR().Pointer()
+	}
+	return nil
+}
+
+func (ptr *Ui_SysTray) SetPointer(p unsafe.Pointer) {
+	if ptr != nil {
+		ptr.QObject_PTR().SetPointer(p)
+	}
+}
+
+func PointerFromUi_SysTray(ptr Ui_SysTray_ITF) unsafe.Pointer {
+	if ptr != nil {
+		return ptr.Ui_SysTray_PTR().Pointer()
+	}
+	return nil
+}
+
+func NewUi_SysTrayFromPointer(ptr unsafe.Pointer) (n *Ui_SysTray) {
+	if gPtr, ok := qt.Receive(ptr); !ok {
+		n = new(Ui_SysTray)
+		n.SetPointer(ptr)
+	} else {
+		switch deduced := gPtr.(type) {
+		case *Ui_SysTray:
+			n = deduced
+
+		case *std_core.QObject:
+			n = &Ui_SysTray{QObject: *deduced}
+
+		default:
+			n = new(Ui_SysTray)
+			n.SetPointer(ptr)
+		}
+	}
+	return
+}
+
+//export callbackUi_SysTray9733cb_Constructor
+func callbackUi_SysTray9733cb_Constructor(ptr unsafe.Pointer) {
+	this := NewUi_SysTrayFromPointer(ptr)
+	qt.Register(ptr, this)
+}
+
+func Ui_SysTray_QRegisterMetaType() int {
+	return int(int32(C.Ui_SysTray9733cb_Ui_SysTray9733cb_QRegisterMetaType()))
+}
+
+func (ptr *Ui_SysTray) QRegisterMetaType() int {
+	return int(int32(C.Ui_SysTray9733cb_Ui_SysTray9733cb_QRegisterMetaType()))
+}
+
+func Ui_SysTray_QRegisterMetaType2(typeName string) int {
+	var typeNameC *C.char
+	if typeName != "" {
+		typeNameC = C.CString(typeName)
+		defer C.free(unsafe.Pointer(typeNameC))
+	}
+	return int(int32(C.Ui_SysTray9733cb_Ui_SysTray9733cb_QRegisterMetaType2(typeNameC)))
+}
+
+func (ptr *Ui_SysTray) QRegisterMetaType2(typeName string) int {
+	var typeNameC *C.char
+	if typeName != "" {
+		typeNameC = C.CString(typeName)
+		defer C.free(unsafe.Pointer(typeNameC))
+	}
+	return int(int32(C.Ui_SysTray9733cb_Ui_SysTray9733cb_QRegisterMetaType2(typeNameC)))
+}
+
+func Ui_SysTray_QmlRegisterType() int {
+	return int(int32(C.Ui_SysTray9733cb_Ui_SysTray9733cb_QmlRegisterType()))
+}
+
+func (ptr *Ui_SysTray) QmlRegisterType() int {
+	return int(int32(C.Ui_SysTray9733cb_Ui_SysTray9733cb_QmlRegisterType()))
+}
+
+func Ui_SysTray_QmlRegisterType2(uri string, versionMajor int, versionMinor int, qmlName string) int {
+	var uriC *C.char
+	if uri != "" {
+		uriC = C.CString(uri)
+		defer C.free(unsafe.Pointer(uriC))
+	}
+	var qmlNameC *C.char
+	if qmlName != "" {
+		qmlNameC = C.CString(qmlName)
+		defer C.free(unsafe.Pointer(qmlNameC))
+	}
+	return int(int32(C.Ui_SysTray9733cb_Ui_SysTray9733cb_QmlRegisterType2(uriC, C.int(int32(versionMajor)), C.int(int32(versionMinor)), qmlNameC)))
+}
+
+func (ptr *Ui_SysTray) QmlRegisterType2(uri string, versionMajor int, versionMinor int, qmlName string) int {
+	var uriC *C.char
+	if uri != "" {
+		uriC = C.CString(uri)
+		defer C.free(unsafe.Pointer(uriC))
+	}
+	var qmlNameC *C.char
+	if qmlName != "" {
+		qmlNameC = C.CString(qmlName)
+		defer C.free(unsafe.Pointer(qmlNameC))
+	}
+	return int(int32(C.Ui_SysTray9733cb_Ui_SysTray9733cb_QmlRegisterType2(uriC, C.int(int32(versionMajor)), C.int(int32(versionMinor)), qmlNameC)))
+}
+
+func (ptr *Ui_SysTray) __dynamicPropertyNames_atList(i int) *std_core.QByteArray {
+	if ptr.Pointer() != nil {
+		tmpValue := std_core.NewQByteArrayFromPointer(C.Ui_SysTray9733cb___dynamicPropertyNames_atList(ptr.Pointer(), C.int(int32(i))))
+		runtime.SetFinalizer(tmpValue, (*std_core.QByteArray).DestroyQByteArray)
+		return tmpValue
+	}
+	return nil
+}
+
+func (ptr *Ui_SysTray) __dynamicPropertyNames_setList(i std_core.QByteArray_ITF) {
+	if ptr.Pointer() != nil {
+		C.Ui_SysTray9733cb___dynamicPropertyNames_setList(ptr.Pointer(), std_core.PointerFromQByteArray(i))
+	}
+}
+
+func (ptr *Ui_SysTray) __dynamicPropertyNames_newList() unsafe.Pointer {
+	return C.Ui_SysTray9733cb___dynamicPropertyNames_newList(ptr.Pointer())
+}
+
+func (ptr *Ui_SysTray) __findChildren_atList2(i int) *std_core.QObject {
+	if ptr.Pointer() != nil {
+		tmpValue := std_core.NewQObjectFromPointer(C.Ui_SysTray9733cb___findChildren_atList2(ptr.Pointer(), C.int(int32(i))))
+		if !qt.ExistsSignal(tmpValue.Pointer(), "destroyed") {
+			tmpValue.ConnectDestroyed(func(*std_core.QObject) { tmpValue.SetPointer(nil) })
+		}
+		return tmpValue
+	}
+	return nil
+}
+
+func (ptr *Ui_SysTray) __findChildren_setList2(i std_core.QObject_ITF) {
+	if ptr.Pointer() != nil {
+		C.Ui_SysTray9733cb___findChildren_setList2(ptr.Pointer(), std_core.PointerFromQObject(i))
+	}
+}
+
+func (ptr *Ui_SysTray) __findChildren_newList2() unsafe.Pointer {
+	return C.Ui_SysTray9733cb___findChildren_newList2(ptr.Pointer())
+}
+
+func (ptr *Ui_SysTray) __findChildren_atList3(i int) *std_core.QObject {
+	if ptr.Pointer() != nil {
+		tmpValue := std_core.NewQObjectFromPointer(C.Ui_SysTray9733cb___findChildren_atList3(ptr.Pointer(), C.int(int32(i))))
+		if !qt.ExistsSignal(tmpValue.Pointer(), "destroyed") {
+			tmpValue.ConnectDestroyed(func(*std_core.QObject) { tmpValue.SetPointer(nil) })
+		}
+		return tmpValue
+	}
+	return nil
+}
+
+func (ptr *Ui_SysTray) __findChildren_setList3(i std_core.QObject_ITF) {
+	if ptr.Pointer() != nil {
+		C.Ui_SysTray9733cb___findChildren_setList3(ptr.Pointer(), std_core.PointerFromQObject(i))
+	}
+}
+
+func (ptr *Ui_SysTray) __findChildren_newList3() unsafe.Pointer {
+	return C.Ui_SysTray9733cb___findChildren_newList3(ptr.Pointer())
+}
+
+func (ptr *Ui_SysTray) __findChildren_atList(i int) *std_core.QObject {
+	if ptr.Pointer() != nil {
+		tmpValue := std_core.NewQObjectFromPointer(C.Ui_SysTray9733cb___findChildren_atList(ptr.Pointer(), C.int(int32(i))))
+		if !qt.ExistsSignal(tmpValue.Pointer(), "destroyed") {
+			tmpValue.ConnectDestroyed(func(*std_core.QObject) { tmpValue.SetPointer(nil) })
+		}
+		return tmpValue
+	}
+	return nil
+}
+
+func (ptr *Ui_SysTray) __findChildren_setList(i std_core.QObject_ITF) {
+	if ptr.Pointer() != nil {
+		C.Ui_SysTray9733cb___findChildren_setList(ptr.Pointer(), std_core.PointerFromQObject(i))
+	}
+}
+
+func (ptr *Ui_SysTray) __findChildren_newList() unsafe.Pointer {
+	return C.Ui_SysTray9733cb___findChildren_newList(ptr.Pointer())
+}
+
+func (ptr *Ui_SysTray) __children_atList(i int) *std_core.QObject {
+	if ptr.Pointer() != nil {
+		tmpValue := std_core.NewQObjectFromPointer(C.Ui_SysTray9733cb___children_atList(ptr.Pointer(), C.int(int32(i))))
+		if !qt.ExistsSignal(tmpValue.Pointer(), "destroyed") {
+			tmpValue.ConnectDestroyed(func(*std_core.QObject) { tmpValue.SetPointer(nil) })
+		}
+		return tmpValue
+	}
+	return nil
+}
+
+func (ptr *Ui_SysTray) __children_setList(i std_core.QObject_ITF) {
+	if ptr.Pointer() != nil {
+		C.Ui_SysTray9733cb___children_setList(ptr.Pointer(), std_core.PointerFromQObject(i))
+	}
+}
+
+func (ptr *Ui_SysTray) __children_newList() unsafe.Pointer {
+	return C.Ui_SysTray9733cb___children_newList(ptr.Pointer())
+}
+
+func NewUi_SysTray(parent std_core.QObject_ITF) *Ui_SysTray {
+	tmpValue := NewUi_SysTrayFromPointer(C.Ui_SysTray9733cb_NewUi_SysTray(std_core.PointerFromQObject(parent)))
+	if !qt.ExistsSignal(tmpValue.Pointer(), "destroyed") {
+		tmpValue.ConnectDestroyed(func(*std_core.QObject) { tmpValue.SetPointer(nil) })
+	}
+	return tmpValue
+}
+
+//export callbackUi_SysTray9733cb_DestroyUi_SysTray
+func callbackUi_SysTray9733cb_DestroyUi_SysTray(ptr unsafe.Pointer) {
+	if signal := qt.GetSignal(ptr, "~Ui_SysTray"); signal != nil {
+		signal.(func())()
+	} else {
+		NewUi_SysTrayFromPointer(ptr).DestroyUi_SysTrayDefault()
+	}
+}
+
+func (ptr *Ui_SysTray) ConnectDestroyUi_SysTray(f func()) {
+	if ptr.Pointer() != nil {
+
+		if signal := qt.LendSignal(ptr.Pointer(), "~Ui_SysTray"); signal != nil {
+			qt.ConnectSignal(ptr.Pointer(), "~Ui_SysTray", func() {
+				signal.(func())()
+				f()
+			})
+		} else {
+			qt.ConnectSignal(ptr.Pointer(), "~Ui_SysTray", f)
+		}
+	}
+}
+
+func (ptr *Ui_SysTray) DisconnectDestroyUi_SysTray() {
+	if ptr.Pointer() != nil {
+
+		qt.DisconnectSignal(ptr.Pointer(), "~Ui_SysTray")
+	}
+}
+
+func (ptr *Ui_SysTray) DestroyUi_SysTray() {
+	if ptr.Pointer() != nil {
+		C.Ui_SysTray9733cb_DestroyUi_SysTray(ptr.Pointer())
+		ptr.SetPointer(nil)
+		runtime.SetFinalizer(ptr, nil)
+	}
+}
+
+func (ptr *Ui_SysTray) DestroyUi_SysTrayDefault() {
+	if ptr.Pointer() != nil {
+		C.Ui_SysTray9733cb_DestroyUi_SysTrayDefault(ptr.Pointer())
+		ptr.SetPointer(nil)
+		runtime.SetFinalizer(ptr, nil)
+	}
+}
+
+//export callbackUi_SysTray9733cb_Event
+func callbackUi_SysTray9733cb_Event(ptr unsafe.Pointer, e unsafe.Pointer) C.char {
+	if signal := qt.GetSignal(ptr, "event"); signal != nil {
+		return C.char(int8(qt.GoBoolToInt(signal.(func(*std_core.QEvent) bool)(std_core.NewQEventFromPointer(e)))))
+	}
+
+	return C.char(int8(qt.GoBoolToInt(NewUi_SysTrayFromPointer(ptr).EventDefault(std_core.NewQEventFromPointer(e)))))
+}
+
+func (ptr *Ui_SysTray) EventDefault(e std_core.QEvent_ITF) bool {
+	if ptr.Pointer() != nil {
+		return C.Ui_SysTray9733cb_EventDefault(ptr.Pointer(), std_core.PointerFromQEvent(e)) != 0
+	}
+	return false
+}
+
+//export callbackUi_SysTray9733cb_EventFilter
+func callbackUi_SysTray9733cb_EventFilter(ptr unsafe.Pointer, watched unsafe.Pointer, event unsafe.Pointer) C.char {
+	if signal := qt.GetSignal(ptr, "eventFilter"); signal != nil {
+		return C.char(int8(qt.GoBoolToInt(signal.(func(*std_core.QObject, *std_core.QEvent) bool)(std_core.NewQObjectFromPointer(watched), std_core.NewQEventFromPointer(event)))))
+	}
+
+	return C.char(int8(qt.GoBoolToInt(NewUi_SysTrayFromPointer(ptr).EventFilterDefault(std_core.NewQObjectFromPointer(watched), std_core.NewQEventFromPointer(event)))))
+}
+
+func (ptr *Ui_SysTray) EventFilterDefault(watched std_core.QObject_ITF, event std_core.QEvent_ITF) bool {
+	if ptr.Pointer() != nil {
+		return C.Ui_SysTray9733cb_EventFilterDefault(ptr.Pointer(), std_core.PointerFromQObject(watched), std_core.PointerFromQEvent(event)) != 0
+	}
+	return false
+}
+
+//export callbackUi_SysTray9733cb_ChildEvent
+func callbackUi_SysTray9733cb_ChildEvent(ptr unsafe.Pointer, event unsafe.Pointer) {
+	if signal := qt.GetSignal(ptr, "childEvent"); signal != nil {
+		signal.(func(*std_core.QChildEvent))(std_core.NewQChildEventFromPointer(event))
+	} else {
+		NewUi_SysTrayFromPointer(ptr).ChildEventDefault(std_core.NewQChildEventFromPointer(event))
+	}
+}
+
+func (ptr *Ui_SysTray) ChildEventDefault(event std_core.QChildEvent_ITF) {
+	if ptr.Pointer() != nil {
+		C.Ui_SysTray9733cb_ChildEventDefault(ptr.Pointer(), std_core.PointerFromQChildEvent(event))
+	}
+}
+
+//export callbackUi_SysTray9733cb_ConnectNotify
+func callbackUi_SysTray9733cb_ConnectNotify(ptr unsafe.Pointer, sign unsafe.Pointer) {
+	if signal := qt.GetSignal(ptr, "connectNotify"); signal != nil {
+		signal.(func(*std_core.QMetaMethod))(std_core.NewQMetaMethodFromPointer(sign))
+	} else {
+		NewUi_SysTrayFromPointer(ptr).ConnectNotifyDefault(std_core.NewQMetaMethodFromPointer(sign))
+	}
+}
+
+func (ptr *Ui_SysTray) ConnectNotifyDefault(sign std_core.QMetaMethod_ITF) {
+	if ptr.Pointer() != nil {
+		C.Ui_SysTray9733cb_ConnectNotifyDefault(ptr.Pointer(), std_core.PointerFromQMetaMethod(sign))
+	}
+}
+
+//export callbackUi_SysTray9733cb_CustomEvent
+func callbackUi_SysTray9733cb_CustomEvent(ptr unsafe.Pointer, event unsafe.Pointer) {
+	if signal := qt.GetSignal(ptr, "customEvent"); signal != nil {
+		signal.(func(*std_core.QEvent))(std_core.NewQEventFromPointer(event))
+	} else {
+		NewUi_SysTrayFromPointer(ptr).CustomEventDefault(std_core.NewQEventFromPointer(event))
+	}
+}
+
+func (ptr *Ui_SysTray) CustomEventDefault(event std_core.QEvent_ITF) {
+	if ptr.Pointer() != nil {
+		C.Ui_SysTray9733cb_CustomEventDefault(ptr.Pointer(), std_core.PointerFromQEvent(event))
+	}
+}
+
+//export callbackUi_SysTray9733cb_DeleteLater
+func callbackUi_SysTray9733cb_DeleteLater(ptr unsafe.Pointer) {
+	if signal := qt.GetSignal(ptr, "deleteLater"); signal != nil {
+		signal.(func())()
+	} else {
+		NewUi_SysTrayFromPointer(ptr).DeleteLaterDefault()
+	}
+}
+
+func (ptr *Ui_SysTray) DeleteLaterDefault() {
+	if ptr.Pointer() != nil {
+		C.Ui_SysTray9733cb_DeleteLaterDefault(ptr.Pointer())
+		ptr.SetPointer(nil)
+		runtime.SetFinalizer(ptr, nil)
+	}
+}
+
+//export callbackUi_SysTray9733cb_Destroyed
+func callbackUi_SysTray9733cb_Destroyed(ptr unsafe.Pointer, obj unsafe.Pointer) {
+	if signal := qt.GetSignal(ptr, "destroyed"); signal != nil {
+		signal.(func(*std_core.QObject))(std_core.NewQObjectFromPointer(obj))
+	}
+
+}
+
+//export callbackUi_SysTray9733cb_DisconnectNotify
+func callbackUi_SysTray9733cb_DisconnectNotify(ptr unsafe.Pointer, sign unsafe.Pointer) {
+	if signal := qt.GetSignal(ptr, "disconnectNotify"); signal != nil {
+		signal.(func(*std_core.QMetaMethod))(std_core.NewQMetaMethodFromPointer(sign))
+	} else {
+		NewUi_SysTrayFromPointer(ptr).DisconnectNotifyDefault(std_core.NewQMetaMethodFromPointer(sign))
+	}
+}
+
+func (ptr *Ui_SysTray) DisconnectNotifyDefault(sign std_core.QMetaMethod_ITF) {
+	if ptr.Pointer() != nil {
+		C.Ui_SysTray9733cb_DisconnectNotifyDefault(ptr.Pointer(), std_core.PointerFromQMetaMethod(sign))
+	}
+}
+
+//export callbackUi_SysTray9733cb_ObjectNameChanged
+func callbackUi_SysTray9733cb_ObjectNameChanged(ptr unsafe.Pointer, objectName C.struct_Moc_PackedString) {
+	if signal := qt.GetSignal(ptr, "objectNameChanged"); signal != nil {
+		signal.(func(string))(cGoUnpackString(objectName))
+	}
+
+}
+
+//export callbackUi_SysTray9733cb_TimerEvent
+func callbackUi_SysTray9733cb_TimerEvent(ptr unsafe.Pointer, event unsafe.Pointer) {
+	if signal := qt.GetSignal(ptr, "timerEvent"); signal != nil {
+		signal.(func(*std_core.QTimerEvent))(std_core.NewQTimerEventFromPointer(event))
+	} else {
+		NewUi_SysTrayFromPointer(ptr).TimerEventDefault(std_core.NewQTimerEventFromPointer(event))
+	}
+}
+
+func (ptr *Ui_SysTray) TimerEventDefault(event std_core.QTimerEvent_ITF) {
+	if ptr.Pointer() != nil {
+		C.Ui_SysTray9733cb_TimerEventDefault(ptr.Pointer(), std_core.PointerFromQTimerEvent(event))
+	}
 }

@@ -4,23 +4,9 @@ import (
 	"github.com/therecipe/qt/gui"
 	"github.com/therecipe/qt/widgets"
 )
-//type Communicate struct{
-//	widgets.QWidget
-//	ShowDialog
-//}
-//class Communicate(QtCore.QObject):
-//    showDialog = QtCore.pyqtSignal(QApplication,QDialog)
-//
+
 type DoingList struct{
 	widgets.QListWidget
-//    def focusInEvent(self, event):
-//        cur = self.currentRow()
-//        if cur == -1:
-//            self.setCurrentRow(0)
-//
-//        self.setFocus()
-//        super(DoingList, self).focusInEvent(event)
-//
 //
 //    def keyPressEvent(self, event):
 //        if     event.key() == QtCore.Qt.Key_Delete  or event.key() == QtCore.Qt.Key_Enter:
@@ -28,14 +14,14 @@ type DoingList struct{
 //            return
 //        super(DoingList, self).keyPressEvent(event)
 }
-func ( s *DoingList ) FocusInEvent(event gui.QFocusEvent_ITF){
-	cur := s.CurrentRow()
-	if cur == -1{
-		s.SetCurrentRow(0)
-	}
-	s.SetFocus2()
-	s.FocusInEvent( event )
-}
+// func ( s *DoingList ) FocusInEvent(event gui.QFocusEvent_ITF){
+// 	cur := s.CurrentRow()
+// 	if cur == -1{
+// 		s.SetCurrentRow(0)
+// 	}
+// 	s.SetFocus2()
+// 	s.FocusInEvent( event )
+// }
 //class DoingListItemDelegate(QtWidgets.QItemDelegate):
 //    def editorEvent( self, event, model, option, index):
 //        print('doinglist item delegate edit event')
@@ -102,7 +88,7 @@ func (s *Ui_Dialog) SetupUi(dialog *widgets.QDialog){
     s.Label.SetObjectName("label")
     s.VerticalLayout.AddWidget(s.Label, 0, core.Qt__AlignTop)
 
-    s.ListWidget = &DoingList{*widgets.NewQListWidget(s.VerticalLayoutWidget)}
+    s.ListWidget = NewDoingList(s.VerticalLayoutWidget)
     s.ListWidget.SetObjectName("listWidget")
     s.ListWidget.SetStyleSheet("QListWidgetItem")
     s.VerticalLayout.AddWidget(s.ListWidget, 0, core.Qt__AlignTop)
@@ -139,9 +125,8 @@ func (s *Ui_Dialog)FinishEditing( ){
         return
 	}
     s.LineEdit.Clear()
-    item := widgets.NewQListWidgetItem4(nil)
+    item := widgets.NewQListWidgetItem2(doing,s.ListWidget,0)
     item.SetFlags(core.Qt__ItemIsSelectable|core.Qt__ItemIsUserCheckable|core.Qt__ItemIsEnabled)
-    item.SetText(doing)
     s.ListWidget.InsertItem(0, item)
 }
 

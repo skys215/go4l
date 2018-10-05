@@ -8,21 +8,26 @@ import(
 )
 
 
-//func closeEvent( mainDialog *widgets.QDialog){
-//    quit_msg := "你确定要退出吗？"
-//    ActivateEvent();
-//    reply := widgets.QMessageBox_Question(mainDialog, "Message",
-//                     quit_msg, widgets.QMessageBox__Yes, widgets.QMessageBox__No)
-//
-//    if reply == widgets.QMessageBox__Yes{
-//        syscall.Exit(0)
-//	}
-//}
+func closeEvent(ui *Ui_Dialog, app *AppDoingList, mainDialog *widgets.QDialog){
+   quit_msg := "你确定要退出吗？"
+   activateEvent(ui, app, mainDialog);
+   reply := widgets.QMessageBox_Question(mainDialog, "Message",
+                    quit_msg, widgets.QMessageBox__Yes, widgets.QMessageBox__No)
+
+   if reply == widgets.QMessageBox__Yes{
+       syscall.Exit(0)
+	}
+}
+
+func activateEvent(ui *Ui_Dialog, app *AppDoingList, mainDialog *widgets.QDialog){
+    ui.ShowDialog(app,mainDialog)
+}
 
 type AppDoingList struct{
     widgets.QApplication
-    _ func() `signal:"quitApp"`
-    _ func() `signal:"activateApp"`
+    Ui *Ui_Dialog
+    _ func(ui *Ui_Dialog, app *AppDoingList, mainDialog *widgets.QDialog) `signal:"quitApp"`
+    _ func(ui *Ui_Dialog, app *AppDoingList, mainDialog *widgets.QDialog) `signal:"activateApp"`
 }
 
 func main(){
@@ -43,19 +48,18 @@ func main(){
 
     mainDialog := widgets.NewQDialog(nil, core.Qt__WindowCloseButtonHint | core.Qt__WindowMinimizeButtonHint | core.Qt__MSWindowsFixedSizeDialogHint)
     // | core.Qt__WindowTitleHint
-    var ui Ui_Dialog
-    ui.SetupUi(mainDialog)
+    app.Ui = NewUi_Dialog(nil)
+    app.Ui.SetupUi(mainDialog)
     mainDialog.Show()
 
     mainWidget := widgets.NewQDesktopWidgetFromPointer(nil)
-    wid := new(Ui_SysTray)
-    wid.SetupUi( mainWidget, app )
+    wid := NewUi_SysTray(nil)
+    wid.SetupUi( mainWidget, app, mainDialog )
     mainWidget.Show()
 
     app.SetQuitOnLastWindowClosed(false)
 
-    //app.ConnectQuitApp(closeEvent)
-	activateEvent := func(){ui.ShowDialog(app,mainDialog)}
+    app.ConnectQuitApp(closeEvent)
     app.ConnectActivateApp(activateEvent)
 
     //keyboard.add_hotkey('ctrl+alt+d', activateEvent)

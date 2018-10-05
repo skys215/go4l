@@ -8,16 +8,16 @@ import(
 type Ui_SysTray struct{
 	core.QObject
 }
-func (s *Ui_SysTray) SetupUi( widget *widgets.QDesktopWidget, app *AppDoingList){
-    systray := widgets.NewQSystemTrayIcon2( gui.NewQIcon5("logo.png"), widget)
+func (s *Ui_SysTray) SetupUi( widget *widgets.QDesktopWidget, app *AppDoingList, dialog *widgets.QDialog){
+    systray := widgets.NewQSystemTrayIcon2( gui.NewQIcon5("/iamges/logo.png"), widget)
     systray.SetToolTip("B4L")
     //systray.Activated.connect(lambda reason: self.iconTriggered(reason, app))
 
     tray_icon_menu := widgets.NewQMenu(nil)
-    //openAction := tray_icon_menu.AddAction("Open")
-    //openAction.Triggered.Connect(app.Sig.ActivateApp.Emit)
-    //exitAction := tray_icon_menu.AddAction("Exit")
-    //exitAction.Triggered.Connect(app.Sig.QuitApp.Emit)
+    openAction := tray_icon_menu.AddAction("Open")
+    openAction.ConnectTriggered(func(bool){app.Ui.ShowDialog(app, dialog)})
+    // exitAction := tray_icon_menu.AddAction("Exit")
+    // exitAction.ConnectTriggered(app.QuitApp)
 
     systray.SetContextMenu(tray_icon_menu)
     systray.Show()

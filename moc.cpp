@@ -300,8 +300,8 @@ class AppDoingList9733cb: public QApplication
 Q_OBJECT
 public:
 	AppDoingList9733cb(int &argc, char **argv) : QApplication(argc, argv) {qRegisterMetaType<quintptr>("quintptr");AppDoingList9733cb_AppDoingList9733cb_QRegisterMetaType();AppDoingList9733cb_AppDoingList9733cb_QRegisterMetaTypes();callbackAppDoingList9733cb_Constructor(this);};
-	void Signal_QuitApp() { callbackAppDoingList9733cb_QuitApp(this); };
-	void Signal_ActivateApp() { callbackAppDoingList9733cb_ActivateApp(this); };
+	void Signal_QuitApp(Ui_Dialog9733cb* ui, AppDoingList9733cb* app, QDialog* mainDialog) { callbackAppDoingList9733cb_QuitApp(this, ui, app, mainDialog); };
+	void Signal_ActivateApp(Ui_Dialog9733cb* ui, AppDoingList9733cb* app, QDialog* mainDialog) { callbackAppDoingList9733cb_ActivateApp(this, ui, app, mainDialog); };
 	 ~AppDoingList9733cb() { callbackAppDoingList9733cb_DestroyAppDoingList(this); };
 	bool event(QEvent * e) { return callbackAppDoingList9733cb_Event(this, e) != 0; };
 	
@@ -338,8 +338,8 @@ public:
 	void Signal_ObjectNameChanged(const QString & objectName) { QByteArray taa2c4f = objectName.toUtf8(); Moc_PackedString objectNamePacked = { const_cast<char*>(taa2c4f.prepend("WHITESPACE").constData()+10), taa2c4f.size()-10 };callbackAppDoingList9733cb_ObjectNameChanged(this, objectNamePacked); };
 	void timerEvent(QTimerEvent * event) { callbackAppDoingList9733cb_TimerEvent(this, event); };
 signals:
-	void quitApp();
-	void activateApp();
+	void quitApp(Ui_Dialog9733cb* ui, AppDoingList9733cb* app, QDialog* mainDialog);
+	void activateApp(Ui_Dialog9733cb* ui, AppDoingList9733cb* app, QDialog* mainDialog);
 public slots:
 private:
 };
@@ -348,674 +348,6 @@ Q_DECLARE_METATYPE(AppDoingList9733cb*)
 
 
 void AppDoingList9733cb_AppDoingList9733cb_QRegisterMetaTypes() {
-}
-
-void Ui_Dialog9733cb_ActivateEvent(void* ptr, void* v0, void* v1)
-{
-	QMetaObject::invokeMethod(static_cast<Ui_Dialog9733cb*>(ptr), "activateEvent", Q_ARG(QApplication*, static_cast<QApplication*>(v0)), Q_ARG(QDialog*, static_cast<QDialog*>(v1)));
-}
-
-int Ui_Dialog9733cb_Ui_Dialog9733cb_QRegisterMetaType()
-{
-	return qRegisterMetaType<Ui_Dialog9733cb*>();
-}
-
-int Ui_Dialog9733cb_Ui_Dialog9733cb_QRegisterMetaType2(char* typeName)
-{
-	return qRegisterMetaType<Ui_Dialog9733cb*>(const_cast<const char*>(typeName));
-}
-
-int Ui_Dialog9733cb_Ui_Dialog9733cb_QmlRegisterType()
-{
-#ifdef QT_QML_LIB
-	return qmlRegisterType<Ui_Dialog9733cb>();
-#else
-	return 0;
-#endif
-}
-
-int Ui_Dialog9733cb_Ui_Dialog9733cb_QmlRegisterType2(char* uri, int versionMajor, int versionMinor, char* qmlName)
-{
-#ifdef QT_QML_LIB
-	return qmlRegisterType<Ui_Dialog9733cb>(const_cast<const char*>(uri), versionMajor, versionMinor, const_cast<const char*>(qmlName));
-#else
-	return 0;
-#endif
-}
-
-void* Ui_Dialog9733cb___dynamicPropertyNames_atList(void* ptr, int i)
-{
-	return new QByteArray(({QByteArray tmp = static_cast<QList<QByteArray>*>(ptr)->at(i); if (i == static_cast<QList<QByteArray>*>(ptr)->size()-1) { static_cast<QList<QByteArray>*>(ptr)->~QList(); free(ptr); }; tmp; }));
-}
-
-void Ui_Dialog9733cb___dynamicPropertyNames_setList(void* ptr, void* i)
-{
-	static_cast<QList<QByteArray>*>(ptr)->append(*static_cast<QByteArray*>(i));
-}
-
-void* Ui_Dialog9733cb___dynamicPropertyNames_newList(void* ptr)
-{
-	Q_UNUSED(ptr);
-	return new QList<QByteArray>();
-}
-
-void* Ui_Dialog9733cb___findChildren_atList2(void* ptr, int i)
-{
-	return ({QObject* tmp = static_cast<QList<QObject*>*>(ptr)->at(i); if (i == static_cast<QList<QObject*>*>(ptr)->size()-1) { static_cast<QList<QObject*>*>(ptr)->~QList(); free(ptr); }; tmp; });
-}
-
-void Ui_Dialog9733cb___findChildren_setList2(void* ptr, void* i)
-{
-	static_cast<QList<QObject*>*>(ptr)->append(static_cast<QObject*>(i));
-}
-
-void* Ui_Dialog9733cb___findChildren_newList2(void* ptr)
-{
-	Q_UNUSED(ptr);
-	return new QList<QObject*>();
-}
-
-void* Ui_Dialog9733cb___findChildren_atList3(void* ptr, int i)
-{
-	return ({QObject* tmp = static_cast<QList<QObject*>*>(ptr)->at(i); if (i == static_cast<QList<QObject*>*>(ptr)->size()-1) { static_cast<QList<QObject*>*>(ptr)->~QList(); free(ptr); }; tmp; });
-}
-
-void Ui_Dialog9733cb___findChildren_setList3(void* ptr, void* i)
-{
-	static_cast<QList<QObject*>*>(ptr)->append(static_cast<QObject*>(i));
-}
-
-void* Ui_Dialog9733cb___findChildren_newList3(void* ptr)
-{
-	Q_UNUSED(ptr);
-	return new QList<QObject*>();
-}
-
-void* Ui_Dialog9733cb___findChildren_atList(void* ptr, int i)
-{
-	return ({QObject* tmp = static_cast<QList<QObject*>*>(ptr)->at(i); if (i == static_cast<QList<QObject*>*>(ptr)->size()-1) { static_cast<QList<QObject*>*>(ptr)->~QList(); free(ptr); }; tmp; });
-}
-
-void Ui_Dialog9733cb___findChildren_setList(void* ptr, void* i)
-{
-	static_cast<QList<QObject*>*>(ptr)->append(static_cast<QObject*>(i));
-}
-
-void* Ui_Dialog9733cb___findChildren_newList(void* ptr)
-{
-	Q_UNUSED(ptr);
-	return new QList<QObject*>();
-}
-
-void* Ui_Dialog9733cb___children_atList(void* ptr, int i)
-{
-	return ({QObject * tmp = static_cast<QList<QObject *>*>(ptr)->at(i); if (i == static_cast<QList<QObject *>*>(ptr)->size()-1) { static_cast<QList<QObject *>*>(ptr)->~QList(); free(ptr); }; tmp; });
-}
-
-void Ui_Dialog9733cb___children_setList(void* ptr, void* i)
-{
-	static_cast<QList<QObject *>*>(ptr)->append(static_cast<QObject*>(i));
-}
-
-void* Ui_Dialog9733cb___children_newList(void* ptr)
-{
-	Q_UNUSED(ptr);
-	return new QList<QObject *>();
-}
-
-void* Ui_Dialog9733cb_NewUi_Dialog(void* parent)
-{
-	if (dynamic_cast<QCameraImageCapture*>(static_cast<QObject*>(parent))) {
-		return new Ui_Dialog9733cb(static_cast<QCameraImageCapture*>(parent));
-	} else if (dynamic_cast<QDBusPendingCallWatcher*>(static_cast<QObject*>(parent))) {
-		return new Ui_Dialog9733cb(static_cast<QDBusPendingCallWatcher*>(parent));
-	} else if (dynamic_cast<QExtensionFactory*>(static_cast<QObject*>(parent))) {
-		return new Ui_Dialog9733cb(static_cast<QExtensionFactory*>(parent));
-	} else if (dynamic_cast<QExtensionManager*>(static_cast<QObject*>(parent))) {
-		return new Ui_Dialog9733cb(static_cast<QExtensionManager*>(parent));
-	} else if (dynamic_cast<QGraphicsObject*>(static_cast<QObject*>(parent))) {
-		return new Ui_Dialog9733cb(static_cast<QGraphicsObject*>(parent));
-	} else if (dynamic_cast<QGraphicsWidget*>(static_cast<QObject*>(parent))) {
-		return new Ui_Dialog9733cb(static_cast<QGraphicsWidget*>(parent));
-	} else if (dynamic_cast<QLayout*>(static_cast<QObject*>(parent))) {
-		return new Ui_Dialog9733cb(static_cast<QLayout*>(parent));
-	} else if (dynamic_cast<QMediaPlaylist*>(static_cast<QObject*>(parent))) {
-		return new Ui_Dialog9733cb(static_cast<QMediaPlaylist*>(parent));
-	} else if (dynamic_cast<QMediaRecorder*>(static_cast<QObject*>(parent))) {
-		return new Ui_Dialog9733cb(static_cast<QMediaRecorder*>(parent));
-	} else if (dynamic_cast<QOffscreenSurface*>(static_cast<QObject*>(parent))) {
-		return new Ui_Dialog9733cb(static_cast<QOffscreenSurface*>(parent));
-	} else if (dynamic_cast<QPaintDeviceWindow*>(static_cast<QObject*>(parent))) {
-		return new Ui_Dialog9733cb(static_cast<QPaintDeviceWindow*>(parent));
-	} else if (dynamic_cast<QPdfWriter*>(static_cast<QObject*>(parent))) {
-		return new Ui_Dialog9733cb(static_cast<QPdfWriter*>(parent));
-	} else if (dynamic_cast<QQuickItem*>(static_cast<QObject*>(parent))) {
-		return new Ui_Dialog9733cb(static_cast<QQuickItem*>(parent));
-	} else if (dynamic_cast<QRadioData*>(static_cast<QObject*>(parent))) {
-		return new Ui_Dialog9733cb(static_cast<QRadioData*>(parent));
-	} else if (dynamic_cast<QWidget*>(static_cast<QObject*>(parent))) {
-		return new Ui_Dialog9733cb(static_cast<QWidget*>(parent));
-	} else if (dynamic_cast<QWindow*>(static_cast<QObject*>(parent))) {
-		return new Ui_Dialog9733cb(static_cast<QWindow*>(parent));
-	} else {
-		return new Ui_Dialog9733cb(static_cast<QObject*>(parent));
-	}
-}
-
-void Ui_Dialog9733cb_DestroyUi_Dialog(void* ptr)
-{
-	static_cast<Ui_Dialog9733cb*>(ptr)->~Ui_Dialog9733cb();
-}
-
-void Ui_Dialog9733cb_DestroyUi_DialogDefault(void* ptr)
-{
-	Q_UNUSED(ptr);
-
-}
-
-char Ui_Dialog9733cb_EventDefault(void* ptr, void* e)
-{
-	return static_cast<Ui_Dialog9733cb*>(ptr)->QObject::event(static_cast<QEvent*>(e));
-}
-
-char Ui_Dialog9733cb_EventFilterDefault(void* ptr, void* watched, void* event)
-{
-	return static_cast<Ui_Dialog9733cb*>(ptr)->QObject::eventFilter(static_cast<QObject*>(watched), static_cast<QEvent*>(event));
-}
-
-void Ui_Dialog9733cb_ChildEventDefault(void* ptr, void* event)
-{
-	static_cast<Ui_Dialog9733cb*>(ptr)->QObject::childEvent(static_cast<QChildEvent*>(event));
-}
-
-void Ui_Dialog9733cb_ConnectNotifyDefault(void* ptr, void* sign)
-{
-	static_cast<Ui_Dialog9733cb*>(ptr)->QObject::connectNotify(*static_cast<QMetaMethod*>(sign));
-}
-
-void Ui_Dialog9733cb_CustomEventDefault(void* ptr, void* event)
-{
-	static_cast<Ui_Dialog9733cb*>(ptr)->QObject::customEvent(static_cast<QEvent*>(event));
-}
-
-void Ui_Dialog9733cb_DeleteLaterDefault(void* ptr)
-{
-	static_cast<Ui_Dialog9733cb*>(ptr)->QObject::deleteLater();
-}
-
-void Ui_Dialog9733cb_DisconnectNotifyDefault(void* ptr, void* sign)
-{
-	static_cast<Ui_Dialog9733cb*>(ptr)->QObject::disconnectNotify(*static_cast<QMetaMethod*>(sign));
-}
-
-void Ui_Dialog9733cb_TimerEventDefault(void* ptr, void* event)
-{
-	static_cast<Ui_Dialog9733cb*>(ptr)->QObject::timerEvent(static_cast<QTimerEvent*>(event));
-}
-
-
-
-int Ui_SysTray9733cb_Ui_SysTray9733cb_QRegisterMetaType()
-{
-	return qRegisterMetaType<Ui_SysTray9733cb*>();
-}
-
-int Ui_SysTray9733cb_Ui_SysTray9733cb_QRegisterMetaType2(char* typeName)
-{
-	return qRegisterMetaType<Ui_SysTray9733cb*>(const_cast<const char*>(typeName));
-}
-
-int Ui_SysTray9733cb_Ui_SysTray9733cb_QmlRegisterType()
-{
-#ifdef QT_QML_LIB
-	return qmlRegisterType<Ui_SysTray9733cb>();
-#else
-	return 0;
-#endif
-}
-
-int Ui_SysTray9733cb_Ui_SysTray9733cb_QmlRegisterType2(char* uri, int versionMajor, int versionMinor, char* qmlName)
-{
-#ifdef QT_QML_LIB
-	return qmlRegisterType<Ui_SysTray9733cb>(const_cast<const char*>(uri), versionMajor, versionMinor, const_cast<const char*>(qmlName));
-#else
-	return 0;
-#endif
-}
-
-void* Ui_SysTray9733cb___dynamicPropertyNames_atList(void* ptr, int i)
-{
-	return new QByteArray(({QByteArray tmp = static_cast<QList<QByteArray>*>(ptr)->at(i); if (i == static_cast<QList<QByteArray>*>(ptr)->size()-1) { static_cast<QList<QByteArray>*>(ptr)->~QList(); free(ptr); }; tmp; }));
-}
-
-void Ui_SysTray9733cb___dynamicPropertyNames_setList(void* ptr, void* i)
-{
-	static_cast<QList<QByteArray>*>(ptr)->append(*static_cast<QByteArray*>(i));
-}
-
-void* Ui_SysTray9733cb___dynamicPropertyNames_newList(void* ptr)
-{
-	Q_UNUSED(ptr);
-	return new QList<QByteArray>();
-}
-
-void* Ui_SysTray9733cb___findChildren_atList2(void* ptr, int i)
-{
-	return ({QObject* tmp = static_cast<QList<QObject*>*>(ptr)->at(i); if (i == static_cast<QList<QObject*>*>(ptr)->size()-1) { static_cast<QList<QObject*>*>(ptr)->~QList(); free(ptr); }; tmp; });
-}
-
-void Ui_SysTray9733cb___findChildren_setList2(void* ptr, void* i)
-{
-	static_cast<QList<QObject*>*>(ptr)->append(static_cast<QObject*>(i));
-}
-
-void* Ui_SysTray9733cb___findChildren_newList2(void* ptr)
-{
-	Q_UNUSED(ptr);
-	return new QList<QObject*>();
-}
-
-void* Ui_SysTray9733cb___findChildren_atList3(void* ptr, int i)
-{
-	return ({QObject* tmp = static_cast<QList<QObject*>*>(ptr)->at(i); if (i == static_cast<QList<QObject*>*>(ptr)->size()-1) { static_cast<QList<QObject*>*>(ptr)->~QList(); free(ptr); }; tmp; });
-}
-
-void Ui_SysTray9733cb___findChildren_setList3(void* ptr, void* i)
-{
-	static_cast<QList<QObject*>*>(ptr)->append(static_cast<QObject*>(i));
-}
-
-void* Ui_SysTray9733cb___findChildren_newList3(void* ptr)
-{
-	Q_UNUSED(ptr);
-	return new QList<QObject*>();
-}
-
-void* Ui_SysTray9733cb___findChildren_atList(void* ptr, int i)
-{
-	return ({QObject* tmp = static_cast<QList<QObject*>*>(ptr)->at(i); if (i == static_cast<QList<QObject*>*>(ptr)->size()-1) { static_cast<QList<QObject*>*>(ptr)->~QList(); free(ptr); }; tmp; });
-}
-
-void Ui_SysTray9733cb___findChildren_setList(void* ptr, void* i)
-{
-	static_cast<QList<QObject*>*>(ptr)->append(static_cast<QObject*>(i));
-}
-
-void* Ui_SysTray9733cb___findChildren_newList(void* ptr)
-{
-	Q_UNUSED(ptr);
-	return new QList<QObject*>();
-}
-
-void* Ui_SysTray9733cb___children_atList(void* ptr, int i)
-{
-	return ({QObject * tmp = static_cast<QList<QObject *>*>(ptr)->at(i); if (i == static_cast<QList<QObject *>*>(ptr)->size()-1) { static_cast<QList<QObject *>*>(ptr)->~QList(); free(ptr); }; tmp; });
-}
-
-void Ui_SysTray9733cb___children_setList(void* ptr, void* i)
-{
-	static_cast<QList<QObject *>*>(ptr)->append(static_cast<QObject*>(i));
-}
-
-void* Ui_SysTray9733cb___children_newList(void* ptr)
-{
-	Q_UNUSED(ptr);
-	return new QList<QObject *>();
-}
-
-void* Ui_SysTray9733cb_NewUi_SysTray(void* parent)
-{
-	if (dynamic_cast<QCameraImageCapture*>(static_cast<QObject*>(parent))) {
-		return new Ui_SysTray9733cb(static_cast<QCameraImageCapture*>(parent));
-	} else if (dynamic_cast<QDBusPendingCallWatcher*>(static_cast<QObject*>(parent))) {
-		return new Ui_SysTray9733cb(static_cast<QDBusPendingCallWatcher*>(parent));
-	} else if (dynamic_cast<QExtensionFactory*>(static_cast<QObject*>(parent))) {
-		return new Ui_SysTray9733cb(static_cast<QExtensionFactory*>(parent));
-	} else if (dynamic_cast<QExtensionManager*>(static_cast<QObject*>(parent))) {
-		return new Ui_SysTray9733cb(static_cast<QExtensionManager*>(parent));
-	} else if (dynamic_cast<QGraphicsObject*>(static_cast<QObject*>(parent))) {
-		return new Ui_SysTray9733cb(static_cast<QGraphicsObject*>(parent));
-	} else if (dynamic_cast<QGraphicsWidget*>(static_cast<QObject*>(parent))) {
-		return new Ui_SysTray9733cb(static_cast<QGraphicsWidget*>(parent));
-	} else if (dynamic_cast<QLayout*>(static_cast<QObject*>(parent))) {
-		return new Ui_SysTray9733cb(static_cast<QLayout*>(parent));
-	} else if (dynamic_cast<QMediaPlaylist*>(static_cast<QObject*>(parent))) {
-		return new Ui_SysTray9733cb(static_cast<QMediaPlaylist*>(parent));
-	} else if (dynamic_cast<QMediaRecorder*>(static_cast<QObject*>(parent))) {
-		return new Ui_SysTray9733cb(static_cast<QMediaRecorder*>(parent));
-	} else if (dynamic_cast<QOffscreenSurface*>(static_cast<QObject*>(parent))) {
-		return new Ui_SysTray9733cb(static_cast<QOffscreenSurface*>(parent));
-	} else if (dynamic_cast<QPaintDeviceWindow*>(static_cast<QObject*>(parent))) {
-		return new Ui_SysTray9733cb(static_cast<QPaintDeviceWindow*>(parent));
-	} else if (dynamic_cast<QPdfWriter*>(static_cast<QObject*>(parent))) {
-		return new Ui_SysTray9733cb(static_cast<QPdfWriter*>(parent));
-	} else if (dynamic_cast<QQuickItem*>(static_cast<QObject*>(parent))) {
-		return new Ui_SysTray9733cb(static_cast<QQuickItem*>(parent));
-	} else if (dynamic_cast<QRadioData*>(static_cast<QObject*>(parent))) {
-		return new Ui_SysTray9733cb(static_cast<QRadioData*>(parent));
-	} else if (dynamic_cast<QWidget*>(static_cast<QObject*>(parent))) {
-		return new Ui_SysTray9733cb(static_cast<QWidget*>(parent));
-	} else if (dynamic_cast<QWindow*>(static_cast<QObject*>(parent))) {
-		return new Ui_SysTray9733cb(static_cast<QWindow*>(parent));
-	} else {
-		return new Ui_SysTray9733cb(static_cast<QObject*>(parent));
-	}
-}
-
-void Ui_SysTray9733cb_DestroyUi_SysTray(void* ptr)
-{
-	static_cast<Ui_SysTray9733cb*>(ptr)->~Ui_SysTray9733cb();
-}
-
-void Ui_SysTray9733cb_DestroyUi_SysTrayDefault(void* ptr)
-{
-	Q_UNUSED(ptr);
-
-}
-
-char Ui_SysTray9733cb_EventDefault(void* ptr, void* e)
-{
-	return static_cast<Ui_SysTray9733cb*>(ptr)->QObject::event(static_cast<QEvent*>(e));
-}
-
-char Ui_SysTray9733cb_EventFilterDefault(void* ptr, void* watched, void* event)
-{
-	return static_cast<Ui_SysTray9733cb*>(ptr)->QObject::eventFilter(static_cast<QObject*>(watched), static_cast<QEvent*>(event));
-}
-
-void Ui_SysTray9733cb_ChildEventDefault(void* ptr, void* event)
-{
-	static_cast<Ui_SysTray9733cb*>(ptr)->QObject::childEvent(static_cast<QChildEvent*>(event));
-}
-
-void Ui_SysTray9733cb_ConnectNotifyDefault(void* ptr, void* sign)
-{
-	static_cast<Ui_SysTray9733cb*>(ptr)->QObject::connectNotify(*static_cast<QMetaMethod*>(sign));
-}
-
-void Ui_SysTray9733cb_CustomEventDefault(void* ptr, void* event)
-{
-	static_cast<Ui_SysTray9733cb*>(ptr)->QObject::customEvent(static_cast<QEvent*>(event));
-}
-
-void Ui_SysTray9733cb_DeleteLaterDefault(void* ptr)
-{
-	static_cast<Ui_SysTray9733cb*>(ptr)->QObject::deleteLater();
-}
-
-void Ui_SysTray9733cb_DisconnectNotifyDefault(void* ptr, void* sign)
-{
-	static_cast<Ui_SysTray9733cb*>(ptr)->QObject::disconnectNotify(*static_cast<QMetaMethod*>(sign));
-}
-
-void Ui_SysTray9733cb_TimerEventDefault(void* ptr, void* event)
-{
-	static_cast<Ui_SysTray9733cb*>(ptr)->QObject::timerEvent(static_cast<QTimerEvent*>(event));
-}
-
-
-
-void AppDoingList9733cb_ConnectQuitApp(void* ptr)
-{
-	QObject::connect(static_cast<AppDoingList9733cb*>(ptr), static_cast<void (AppDoingList9733cb::*)()>(&AppDoingList9733cb::quitApp), static_cast<AppDoingList9733cb*>(ptr), static_cast<void (AppDoingList9733cb::*)()>(&AppDoingList9733cb::Signal_QuitApp));
-}
-
-void AppDoingList9733cb_DisconnectQuitApp(void* ptr)
-{
-	QObject::disconnect(static_cast<AppDoingList9733cb*>(ptr), static_cast<void (AppDoingList9733cb::*)()>(&AppDoingList9733cb::quitApp), static_cast<AppDoingList9733cb*>(ptr), static_cast<void (AppDoingList9733cb::*)()>(&AppDoingList9733cb::Signal_QuitApp));
-}
-
-void AppDoingList9733cb_QuitApp(void* ptr)
-{
-	static_cast<AppDoingList9733cb*>(ptr)->quitApp();
-}
-
-void AppDoingList9733cb_ConnectActivateApp(void* ptr)
-{
-	QObject::connect(static_cast<AppDoingList9733cb*>(ptr), static_cast<void (AppDoingList9733cb::*)()>(&AppDoingList9733cb::activateApp), static_cast<AppDoingList9733cb*>(ptr), static_cast<void (AppDoingList9733cb::*)()>(&AppDoingList9733cb::Signal_ActivateApp));
-}
-
-void AppDoingList9733cb_DisconnectActivateApp(void* ptr)
-{
-	QObject::disconnect(static_cast<AppDoingList9733cb*>(ptr), static_cast<void (AppDoingList9733cb::*)()>(&AppDoingList9733cb::activateApp), static_cast<AppDoingList9733cb*>(ptr), static_cast<void (AppDoingList9733cb::*)()>(&AppDoingList9733cb::Signal_ActivateApp));
-}
-
-void AppDoingList9733cb_ActivateApp(void* ptr)
-{
-	static_cast<AppDoingList9733cb*>(ptr)->activateApp();
-}
-
-int AppDoingList9733cb_AppDoingList9733cb_QRegisterMetaType()
-{
-	return qRegisterMetaType<AppDoingList9733cb*>();
-}
-
-int AppDoingList9733cb_AppDoingList9733cb_QRegisterMetaType2(char* typeName)
-{
-	return qRegisterMetaType<AppDoingList9733cb*>(const_cast<const char*>(typeName));
-}
-
-void* AppDoingList9733cb___allWidgets_atList(void* ptr, int i)
-{
-	return ({QWidget * tmp = static_cast<QList<QWidget *>*>(ptr)->at(i); if (i == static_cast<QList<QWidget *>*>(ptr)->size()-1) { static_cast<QList<QWidget *>*>(ptr)->~QList(); free(ptr); }; tmp; });
-}
-
-void AppDoingList9733cb___allWidgets_setList(void* ptr, void* i)
-{
-	static_cast<QList<QWidget *>*>(ptr)->append(static_cast<QWidget*>(i));
-}
-
-void* AppDoingList9733cb___allWidgets_newList(void* ptr)
-{
-	Q_UNUSED(ptr);
-	return new QList<QWidget *>();
-}
-
-void* AppDoingList9733cb___topLevelWidgets_atList(void* ptr, int i)
-{
-	return ({QWidget * tmp = static_cast<QList<QWidget *>*>(ptr)->at(i); if (i == static_cast<QList<QWidget *>*>(ptr)->size()-1) { static_cast<QList<QWidget *>*>(ptr)->~QList(); free(ptr); }; tmp; });
-}
-
-void AppDoingList9733cb___topLevelWidgets_setList(void* ptr, void* i)
-{
-	static_cast<QList<QWidget *>*>(ptr)->append(static_cast<QWidget*>(i));
-}
-
-void* AppDoingList9733cb___topLevelWidgets_newList(void* ptr)
-{
-	Q_UNUSED(ptr);
-	return new QList<QWidget *>();
-}
-
-void* AppDoingList9733cb___screens_atList(void* ptr, int i)
-{
-	return ({QScreen * tmp = static_cast<QList<QScreen *>*>(ptr)->at(i); if (i == static_cast<QList<QScreen *>*>(ptr)->size()-1) { static_cast<QList<QScreen *>*>(ptr)->~QList(); free(ptr); }; tmp; });
-}
-
-void AppDoingList9733cb___screens_setList(void* ptr, void* i)
-{
-	static_cast<QList<QScreen *>*>(ptr)->append(static_cast<QScreen*>(i));
-}
-
-void* AppDoingList9733cb___screens_newList(void* ptr)
-{
-	Q_UNUSED(ptr);
-	return new QList<QScreen *>();
-}
-
-void* AppDoingList9733cb___dynamicPropertyNames_atList(void* ptr, int i)
-{
-	return new QByteArray(({QByteArray tmp = static_cast<QList<QByteArray>*>(ptr)->at(i); if (i == static_cast<QList<QByteArray>*>(ptr)->size()-1) { static_cast<QList<QByteArray>*>(ptr)->~QList(); free(ptr); }; tmp; }));
-}
-
-void AppDoingList9733cb___dynamicPropertyNames_setList(void* ptr, void* i)
-{
-	static_cast<QList<QByteArray>*>(ptr)->append(*static_cast<QByteArray*>(i));
-}
-
-void* AppDoingList9733cb___dynamicPropertyNames_newList(void* ptr)
-{
-	Q_UNUSED(ptr);
-	return new QList<QByteArray>();
-}
-
-void* AppDoingList9733cb___findChildren_atList2(void* ptr, int i)
-{
-	return ({QObject* tmp = static_cast<QList<QObject*>*>(ptr)->at(i); if (i == static_cast<QList<QObject*>*>(ptr)->size()-1) { static_cast<QList<QObject*>*>(ptr)->~QList(); free(ptr); }; tmp; });
-}
-
-void AppDoingList9733cb___findChildren_setList2(void* ptr, void* i)
-{
-	static_cast<QList<QObject*>*>(ptr)->append(static_cast<QObject*>(i));
-}
-
-void* AppDoingList9733cb___findChildren_newList2(void* ptr)
-{
-	Q_UNUSED(ptr);
-	return new QList<QObject*>();
-}
-
-void* AppDoingList9733cb___findChildren_atList3(void* ptr, int i)
-{
-	return ({QObject* tmp = static_cast<QList<QObject*>*>(ptr)->at(i); if (i == static_cast<QList<QObject*>*>(ptr)->size()-1) { static_cast<QList<QObject*>*>(ptr)->~QList(); free(ptr); }; tmp; });
-}
-
-void AppDoingList9733cb___findChildren_setList3(void* ptr, void* i)
-{
-	static_cast<QList<QObject*>*>(ptr)->append(static_cast<QObject*>(i));
-}
-
-void* AppDoingList9733cb___findChildren_newList3(void* ptr)
-{
-	Q_UNUSED(ptr);
-	return new QList<QObject*>();
-}
-
-void* AppDoingList9733cb___findChildren_atList(void* ptr, int i)
-{
-	return ({QObject* tmp = static_cast<QList<QObject*>*>(ptr)->at(i); if (i == static_cast<QList<QObject*>*>(ptr)->size()-1) { static_cast<QList<QObject*>*>(ptr)->~QList(); free(ptr); }; tmp; });
-}
-
-void AppDoingList9733cb___findChildren_setList(void* ptr, void* i)
-{
-	static_cast<QList<QObject*>*>(ptr)->append(static_cast<QObject*>(i));
-}
-
-void* AppDoingList9733cb___findChildren_newList(void* ptr)
-{
-	Q_UNUSED(ptr);
-	return new QList<QObject*>();
-}
-
-void* AppDoingList9733cb___children_atList(void* ptr, int i)
-{
-	return ({QObject * tmp = static_cast<QList<QObject *>*>(ptr)->at(i); if (i == static_cast<QList<QObject *>*>(ptr)->size()-1) { static_cast<QList<QObject *>*>(ptr)->~QList(); free(ptr); }; tmp; });
-}
-
-void AppDoingList9733cb___children_setList(void* ptr, void* i)
-{
-	static_cast<QList<QObject *>*>(ptr)->append(static_cast<QObject*>(i));
-}
-
-void* AppDoingList9733cb___children_newList(void* ptr)
-{
-	Q_UNUSED(ptr);
-	return new QList<QObject *>();
-}
-
-void* AppDoingList9733cb_NewAppDoingList(int argc, char* argv)
-{
-	static int argcs = argc;
-	static char** argvs = static_cast<char**>(malloc(argcs * sizeof(char*)));
-
-	QList<QByteArray> aList = QByteArray(argv).split('|');
-	for (int i = 0; i < argcs; i++)
-		argvs[i] = (new QByteArray(aList.at(i)))->data();
-
-	return new AppDoingList9733cb(argcs, argvs);
-}
-
-void AppDoingList9733cb_DestroyAppDoingList(void* ptr)
-{
-	static_cast<AppDoingList9733cb*>(ptr)->~AppDoingList9733cb();
-}
-
-void AppDoingList9733cb_DestroyAppDoingListDefault(void* ptr)
-{
-	Q_UNUSED(ptr);
-
-}
-
-char AppDoingList9733cb_EventDefault(void* ptr, void* e)
-{
-	return static_cast<AppDoingList9733cb*>(ptr)->QApplication::event(static_cast<QEvent*>(e));
-}
-
-void AppDoingList9733cb_AboutQtDefault(void* ptr)
-{
-	static_cast<AppDoingList9733cb*>(ptr)->QApplication::aboutQt();
-}
-
-void AppDoingList9733cb_CloseAllWindowsDefault(void* ptr)
-{
-	static_cast<AppDoingList9733cb*>(ptr)->QApplication::closeAllWindows();
-}
-
-void AppDoingList9733cb_SetAutoSipEnabledDefault(void* ptr, char enabled)
-{
-	static_cast<AppDoingList9733cb*>(ptr)->QApplication::setAutoSipEnabled(enabled != 0);
-}
-
-void AppDoingList9733cb_SetStyleSheetDefault(void* ptr, struct Moc_PackedString sheet)
-{
-	static_cast<AppDoingList9733cb*>(ptr)->QApplication::setStyleSheet(QString::fromUtf8(sheet.data, sheet.len));
-}
-
-char AppDoingList9733cb_AutoSipEnabledDefault(void* ptr)
-{
-	return static_cast<AppDoingList9733cb*>(ptr)->QApplication::autoSipEnabled();
-}
-
-
-
-void AppDoingList9733cb_QuitDefault(void* ptr)
-{
-	static_cast<AppDoingList9733cb*>(ptr)->QApplication::quit();
-}
-
-char AppDoingList9733cb_EventFilterDefault(void* ptr, void* watched, void* event)
-{
-	return static_cast<AppDoingList9733cb*>(ptr)->QApplication::eventFilter(static_cast<QObject*>(watched), static_cast<QEvent*>(event));
-}
-
-void AppDoingList9733cb_ChildEventDefault(void* ptr, void* event)
-{
-	static_cast<AppDoingList9733cb*>(ptr)->QApplication::childEvent(static_cast<QChildEvent*>(event));
-}
-
-void AppDoingList9733cb_ConnectNotifyDefault(void* ptr, void* sign)
-{
-	static_cast<AppDoingList9733cb*>(ptr)->QApplication::connectNotify(*static_cast<QMetaMethod*>(sign));
-}
-
-void AppDoingList9733cb_CustomEventDefault(void* ptr, void* event)
-{
-	static_cast<AppDoingList9733cb*>(ptr)->QApplication::customEvent(static_cast<QEvent*>(event));
-}
-
-void AppDoingList9733cb_DeleteLaterDefault(void* ptr)
-{
-	static_cast<AppDoingList9733cb*>(ptr)->QApplication::deleteLater();
-}
-
-void AppDoingList9733cb_DisconnectNotifyDefault(void* ptr, void* sign)
-{
-	static_cast<AppDoingList9733cb*>(ptr)->QApplication::disconnectNotify(*static_cast<QMetaMethod*>(sign));
-}
-
-void AppDoingList9733cb_TimerEventDefault(void* ptr, void* event)
-{
-	static_cast<AppDoingList9733cb*>(ptr)->QApplication::timerEvent(static_cast<QTimerEvent*>(event));
 }
 
 int DoingList9733cb_DoingList9733cb_QRegisterMetaType()
@@ -1863,6 +1195,674 @@ void DoingList9733cb_DeleteLaterDefault(void* ptr)
 void DoingList9733cb_DisconnectNotifyDefault(void* ptr, void* sign)
 {
 	static_cast<DoingList9733cb*>(ptr)->QListWidget::disconnectNotify(*static_cast<QMetaMethod*>(sign));
+}
+
+void Ui_Dialog9733cb_ActivateEvent(void* ptr, void* v0, void* v1)
+{
+	QMetaObject::invokeMethod(static_cast<Ui_Dialog9733cb*>(ptr), "activateEvent", Q_ARG(QApplication*, static_cast<QApplication*>(v0)), Q_ARG(QDialog*, static_cast<QDialog*>(v1)));
+}
+
+int Ui_Dialog9733cb_Ui_Dialog9733cb_QRegisterMetaType()
+{
+	return qRegisterMetaType<Ui_Dialog9733cb*>();
+}
+
+int Ui_Dialog9733cb_Ui_Dialog9733cb_QRegisterMetaType2(char* typeName)
+{
+	return qRegisterMetaType<Ui_Dialog9733cb*>(const_cast<const char*>(typeName));
+}
+
+int Ui_Dialog9733cb_Ui_Dialog9733cb_QmlRegisterType()
+{
+#ifdef QT_QML_LIB
+	return qmlRegisterType<Ui_Dialog9733cb>();
+#else
+	return 0;
+#endif
+}
+
+int Ui_Dialog9733cb_Ui_Dialog9733cb_QmlRegisterType2(char* uri, int versionMajor, int versionMinor, char* qmlName)
+{
+#ifdef QT_QML_LIB
+	return qmlRegisterType<Ui_Dialog9733cb>(const_cast<const char*>(uri), versionMajor, versionMinor, const_cast<const char*>(qmlName));
+#else
+	return 0;
+#endif
+}
+
+void* Ui_Dialog9733cb___dynamicPropertyNames_atList(void* ptr, int i)
+{
+	return new QByteArray(({QByteArray tmp = static_cast<QList<QByteArray>*>(ptr)->at(i); if (i == static_cast<QList<QByteArray>*>(ptr)->size()-1) { static_cast<QList<QByteArray>*>(ptr)->~QList(); free(ptr); }; tmp; }));
+}
+
+void Ui_Dialog9733cb___dynamicPropertyNames_setList(void* ptr, void* i)
+{
+	static_cast<QList<QByteArray>*>(ptr)->append(*static_cast<QByteArray*>(i));
+}
+
+void* Ui_Dialog9733cb___dynamicPropertyNames_newList(void* ptr)
+{
+	Q_UNUSED(ptr);
+	return new QList<QByteArray>();
+}
+
+void* Ui_Dialog9733cb___findChildren_atList2(void* ptr, int i)
+{
+	return ({QObject* tmp = static_cast<QList<QObject*>*>(ptr)->at(i); if (i == static_cast<QList<QObject*>*>(ptr)->size()-1) { static_cast<QList<QObject*>*>(ptr)->~QList(); free(ptr); }; tmp; });
+}
+
+void Ui_Dialog9733cb___findChildren_setList2(void* ptr, void* i)
+{
+	static_cast<QList<QObject*>*>(ptr)->append(static_cast<QObject*>(i));
+}
+
+void* Ui_Dialog9733cb___findChildren_newList2(void* ptr)
+{
+	Q_UNUSED(ptr);
+	return new QList<QObject*>();
+}
+
+void* Ui_Dialog9733cb___findChildren_atList3(void* ptr, int i)
+{
+	return ({QObject* tmp = static_cast<QList<QObject*>*>(ptr)->at(i); if (i == static_cast<QList<QObject*>*>(ptr)->size()-1) { static_cast<QList<QObject*>*>(ptr)->~QList(); free(ptr); }; tmp; });
+}
+
+void Ui_Dialog9733cb___findChildren_setList3(void* ptr, void* i)
+{
+	static_cast<QList<QObject*>*>(ptr)->append(static_cast<QObject*>(i));
+}
+
+void* Ui_Dialog9733cb___findChildren_newList3(void* ptr)
+{
+	Q_UNUSED(ptr);
+	return new QList<QObject*>();
+}
+
+void* Ui_Dialog9733cb___findChildren_atList(void* ptr, int i)
+{
+	return ({QObject* tmp = static_cast<QList<QObject*>*>(ptr)->at(i); if (i == static_cast<QList<QObject*>*>(ptr)->size()-1) { static_cast<QList<QObject*>*>(ptr)->~QList(); free(ptr); }; tmp; });
+}
+
+void Ui_Dialog9733cb___findChildren_setList(void* ptr, void* i)
+{
+	static_cast<QList<QObject*>*>(ptr)->append(static_cast<QObject*>(i));
+}
+
+void* Ui_Dialog9733cb___findChildren_newList(void* ptr)
+{
+	Q_UNUSED(ptr);
+	return new QList<QObject*>();
+}
+
+void* Ui_Dialog9733cb___children_atList(void* ptr, int i)
+{
+	return ({QObject * tmp = static_cast<QList<QObject *>*>(ptr)->at(i); if (i == static_cast<QList<QObject *>*>(ptr)->size()-1) { static_cast<QList<QObject *>*>(ptr)->~QList(); free(ptr); }; tmp; });
+}
+
+void Ui_Dialog9733cb___children_setList(void* ptr, void* i)
+{
+	static_cast<QList<QObject *>*>(ptr)->append(static_cast<QObject*>(i));
+}
+
+void* Ui_Dialog9733cb___children_newList(void* ptr)
+{
+	Q_UNUSED(ptr);
+	return new QList<QObject *>();
+}
+
+void* Ui_Dialog9733cb_NewUi_Dialog(void* parent)
+{
+	if (dynamic_cast<QCameraImageCapture*>(static_cast<QObject*>(parent))) {
+		return new Ui_Dialog9733cb(static_cast<QCameraImageCapture*>(parent));
+	} else if (dynamic_cast<QDBusPendingCallWatcher*>(static_cast<QObject*>(parent))) {
+		return new Ui_Dialog9733cb(static_cast<QDBusPendingCallWatcher*>(parent));
+	} else if (dynamic_cast<QExtensionFactory*>(static_cast<QObject*>(parent))) {
+		return new Ui_Dialog9733cb(static_cast<QExtensionFactory*>(parent));
+	} else if (dynamic_cast<QExtensionManager*>(static_cast<QObject*>(parent))) {
+		return new Ui_Dialog9733cb(static_cast<QExtensionManager*>(parent));
+	} else if (dynamic_cast<QGraphicsObject*>(static_cast<QObject*>(parent))) {
+		return new Ui_Dialog9733cb(static_cast<QGraphicsObject*>(parent));
+	} else if (dynamic_cast<QGraphicsWidget*>(static_cast<QObject*>(parent))) {
+		return new Ui_Dialog9733cb(static_cast<QGraphicsWidget*>(parent));
+	} else if (dynamic_cast<QLayout*>(static_cast<QObject*>(parent))) {
+		return new Ui_Dialog9733cb(static_cast<QLayout*>(parent));
+	} else if (dynamic_cast<QMediaPlaylist*>(static_cast<QObject*>(parent))) {
+		return new Ui_Dialog9733cb(static_cast<QMediaPlaylist*>(parent));
+	} else if (dynamic_cast<QMediaRecorder*>(static_cast<QObject*>(parent))) {
+		return new Ui_Dialog9733cb(static_cast<QMediaRecorder*>(parent));
+	} else if (dynamic_cast<QOffscreenSurface*>(static_cast<QObject*>(parent))) {
+		return new Ui_Dialog9733cb(static_cast<QOffscreenSurface*>(parent));
+	} else if (dynamic_cast<QPaintDeviceWindow*>(static_cast<QObject*>(parent))) {
+		return new Ui_Dialog9733cb(static_cast<QPaintDeviceWindow*>(parent));
+	} else if (dynamic_cast<QPdfWriter*>(static_cast<QObject*>(parent))) {
+		return new Ui_Dialog9733cb(static_cast<QPdfWriter*>(parent));
+	} else if (dynamic_cast<QQuickItem*>(static_cast<QObject*>(parent))) {
+		return new Ui_Dialog9733cb(static_cast<QQuickItem*>(parent));
+	} else if (dynamic_cast<QRadioData*>(static_cast<QObject*>(parent))) {
+		return new Ui_Dialog9733cb(static_cast<QRadioData*>(parent));
+	} else if (dynamic_cast<QWidget*>(static_cast<QObject*>(parent))) {
+		return new Ui_Dialog9733cb(static_cast<QWidget*>(parent));
+	} else if (dynamic_cast<QWindow*>(static_cast<QObject*>(parent))) {
+		return new Ui_Dialog9733cb(static_cast<QWindow*>(parent));
+	} else {
+		return new Ui_Dialog9733cb(static_cast<QObject*>(parent));
+	}
+}
+
+void Ui_Dialog9733cb_DestroyUi_Dialog(void* ptr)
+{
+	static_cast<Ui_Dialog9733cb*>(ptr)->~Ui_Dialog9733cb();
+}
+
+void Ui_Dialog9733cb_DestroyUi_DialogDefault(void* ptr)
+{
+	Q_UNUSED(ptr);
+
+}
+
+char Ui_Dialog9733cb_EventDefault(void* ptr, void* e)
+{
+	return static_cast<Ui_Dialog9733cb*>(ptr)->QObject::event(static_cast<QEvent*>(e));
+}
+
+char Ui_Dialog9733cb_EventFilterDefault(void* ptr, void* watched, void* event)
+{
+	return static_cast<Ui_Dialog9733cb*>(ptr)->QObject::eventFilter(static_cast<QObject*>(watched), static_cast<QEvent*>(event));
+}
+
+void Ui_Dialog9733cb_ChildEventDefault(void* ptr, void* event)
+{
+	static_cast<Ui_Dialog9733cb*>(ptr)->QObject::childEvent(static_cast<QChildEvent*>(event));
+}
+
+void Ui_Dialog9733cb_ConnectNotifyDefault(void* ptr, void* sign)
+{
+	static_cast<Ui_Dialog9733cb*>(ptr)->QObject::connectNotify(*static_cast<QMetaMethod*>(sign));
+}
+
+void Ui_Dialog9733cb_CustomEventDefault(void* ptr, void* event)
+{
+	static_cast<Ui_Dialog9733cb*>(ptr)->QObject::customEvent(static_cast<QEvent*>(event));
+}
+
+void Ui_Dialog9733cb_DeleteLaterDefault(void* ptr)
+{
+	static_cast<Ui_Dialog9733cb*>(ptr)->QObject::deleteLater();
+}
+
+void Ui_Dialog9733cb_DisconnectNotifyDefault(void* ptr, void* sign)
+{
+	static_cast<Ui_Dialog9733cb*>(ptr)->QObject::disconnectNotify(*static_cast<QMetaMethod*>(sign));
+}
+
+void Ui_Dialog9733cb_TimerEventDefault(void* ptr, void* event)
+{
+	static_cast<Ui_Dialog9733cb*>(ptr)->QObject::timerEvent(static_cast<QTimerEvent*>(event));
+}
+
+
+
+int Ui_SysTray9733cb_Ui_SysTray9733cb_QRegisterMetaType()
+{
+	return qRegisterMetaType<Ui_SysTray9733cb*>();
+}
+
+int Ui_SysTray9733cb_Ui_SysTray9733cb_QRegisterMetaType2(char* typeName)
+{
+	return qRegisterMetaType<Ui_SysTray9733cb*>(const_cast<const char*>(typeName));
+}
+
+int Ui_SysTray9733cb_Ui_SysTray9733cb_QmlRegisterType()
+{
+#ifdef QT_QML_LIB
+	return qmlRegisterType<Ui_SysTray9733cb>();
+#else
+	return 0;
+#endif
+}
+
+int Ui_SysTray9733cb_Ui_SysTray9733cb_QmlRegisterType2(char* uri, int versionMajor, int versionMinor, char* qmlName)
+{
+#ifdef QT_QML_LIB
+	return qmlRegisterType<Ui_SysTray9733cb>(const_cast<const char*>(uri), versionMajor, versionMinor, const_cast<const char*>(qmlName));
+#else
+	return 0;
+#endif
+}
+
+void* Ui_SysTray9733cb___dynamicPropertyNames_atList(void* ptr, int i)
+{
+	return new QByteArray(({QByteArray tmp = static_cast<QList<QByteArray>*>(ptr)->at(i); if (i == static_cast<QList<QByteArray>*>(ptr)->size()-1) { static_cast<QList<QByteArray>*>(ptr)->~QList(); free(ptr); }; tmp; }));
+}
+
+void Ui_SysTray9733cb___dynamicPropertyNames_setList(void* ptr, void* i)
+{
+	static_cast<QList<QByteArray>*>(ptr)->append(*static_cast<QByteArray*>(i));
+}
+
+void* Ui_SysTray9733cb___dynamicPropertyNames_newList(void* ptr)
+{
+	Q_UNUSED(ptr);
+	return new QList<QByteArray>();
+}
+
+void* Ui_SysTray9733cb___findChildren_atList2(void* ptr, int i)
+{
+	return ({QObject* tmp = static_cast<QList<QObject*>*>(ptr)->at(i); if (i == static_cast<QList<QObject*>*>(ptr)->size()-1) { static_cast<QList<QObject*>*>(ptr)->~QList(); free(ptr); }; tmp; });
+}
+
+void Ui_SysTray9733cb___findChildren_setList2(void* ptr, void* i)
+{
+	static_cast<QList<QObject*>*>(ptr)->append(static_cast<QObject*>(i));
+}
+
+void* Ui_SysTray9733cb___findChildren_newList2(void* ptr)
+{
+	Q_UNUSED(ptr);
+	return new QList<QObject*>();
+}
+
+void* Ui_SysTray9733cb___findChildren_atList3(void* ptr, int i)
+{
+	return ({QObject* tmp = static_cast<QList<QObject*>*>(ptr)->at(i); if (i == static_cast<QList<QObject*>*>(ptr)->size()-1) { static_cast<QList<QObject*>*>(ptr)->~QList(); free(ptr); }; tmp; });
+}
+
+void Ui_SysTray9733cb___findChildren_setList3(void* ptr, void* i)
+{
+	static_cast<QList<QObject*>*>(ptr)->append(static_cast<QObject*>(i));
+}
+
+void* Ui_SysTray9733cb___findChildren_newList3(void* ptr)
+{
+	Q_UNUSED(ptr);
+	return new QList<QObject*>();
+}
+
+void* Ui_SysTray9733cb___findChildren_atList(void* ptr, int i)
+{
+	return ({QObject* tmp = static_cast<QList<QObject*>*>(ptr)->at(i); if (i == static_cast<QList<QObject*>*>(ptr)->size()-1) { static_cast<QList<QObject*>*>(ptr)->~QList(); free(ptr); }; tmp; });
+}
+
+void Ui_SysTray9733cb___findChildren_setList(void* ptr, void* i)
+{
+	static_cast<QList<QObject*>*>(ptr)->append(static_cast<QObject*>(i));
+}
+
+void* Ui_SysTray9733cb___findChildren_newList(void* ptr)
+{
+	Q_UNUSED(ptr);
+	return new QList<QObject*>();
+}
+
+void* Ui_SysTray9733cb___children_atList(void* ptr, int i)
+{
+	return ({QObject * tmp = static_cast<QList<QObject *>*>(ptr)->at(i); if (i == static_cast<QList<QObject *>*>(ptr)->size()-1) { static_cast<QList<QObject *>*>(ptr)->~QList(); free(ptr); }; tmp; });
+}
+
+void Ui_SysTray9733cb___children_setList(void* ptr, void* i)
+{
+	static_cast<QList<QObject *>*>(ptr)->append(static_cast<QObject*>(i));
+}
+
+void* Ui_SysTray9733cb___children_newList(void* ptr)
+{
+	Q_UNUSED(ptr);
+	return new QList<QObject *>();
+}
+
+void* Ui_SysTray9733cb_NewUi_SysTray(void* parent)
+{
+	if (dynamic_cast<QCameraImageCapture*>(static_cast<QObject*>(parent))) {
+		return new Ui_SysTray9733cb(static_cast<QCameraImageCapture*>(parent));
+	} else if (dynamic_cast<QDBusPendingCallWatcher*>(static_cast<QObject*>(parent))) {
+		return new Ui_SysTray9733cb(static_cast<QDBusPendingCallWatcher*>(parent));
+	} else if (dynamic_cast<QExtensionFactory*>(static_cast<QObject*>(parent))) {
+		return new Ui_SysTray9733cb(static_cast<QExtensionFactory*>(parent));
+	} else if (dynamic_cast<QExtensionManager*>(static_cast<QObject*>(parent))) {
+		return new Ui_SysTray9733cb(static_cast<QExtensionManager*>(parent));
+	} else if (dynamic_cast<QGraphicsObject*>(static_cast<QObject*>(parent))) {
+		return new Ui_SysTray9733cb(static_cast<QGraphicsObject*>(parent));
+	} else if (dynamic_cast<QGraphicsWidget*>(static_cast<QObject*>(parent))) {
+		return new Ui_SysTray9733cb(static_cast<QGraphicsWidget*>(parent));
+	} else if (dynamic_cast<QLayout*>(static_cast<QObject*>(parent))) {
+		return new Ui_SysTray9733cb(static_cast<QLayout*>(parent));
+	} else if (dynamic_cast<QMediaPlaylist*>(static_cast<QObject*>(parent))) {
+		return new Ui_SysTray9733cb(static_cast<QMediaPlaylist*>(parent));
+	} else if (dynamic_cast<QMediaRecorder*>(static_cast<QObject*>(parent))) {
+		return new Ui_SysTray9733cb(static_cast<QMediaRecorder*>(parent));
+	} else if (dynamic_cast<QOffscreenSurface*>(static_cast<QObject*>(parent))) {
+		return new Ui_SysTray9733cb(static_cast<QOffscreenSurface*>(parent));
+	} else if (dynamic_cast<QPaintDeviceWindow*>(static_cast<QObject*>(parent))) {
+		return new Ui_SysTray9733cb(static_cast<QPaintDeviceWindow*>(parent));
+	} else if (dynamic_cast<QPdfWriter*>(static_cast<QObject*>(parent))) {
+		return new Ui_SysTray9733cb(static_cast<QPdfWriter*>(parent));
+	} else if (dynamic_cast<QQuickItem*>(static_cast<QObject*>(parent))) {
+		return new Ui_SysTray9733cb(static_cast<QQuickItem*>(parent));
+	} else if (dynamic_cast<QRadioData*>(static_cast<QObject*>(parent))) {
+		return new Ui_SysTray9733cb(static_cast<QRadioData*>(parent));
+	} else if (dynamic_cast<QWidget*>(static_cast<QObject*>(parent))) {
+		return new Ui_SysTray9733cb(static_cast<QWidget*>(parent));
+	} else if (dynamic_cast<QWindow*>(static_cast<QObject*>(parent))) {
+		return new Ui_SysTray9733cb(static_cast<QWindow*>(parent));
+	} else {
+		return new Ui_SysTray9733cb(static_cast<QObject*>(parent));
+	}
+}
+
+void Ui_SysTray9733cb_DestroyUi_SysTray(void* ptr)
+{
+	static_cast<Ui_SysTray9733cb*>(ptr)->~Ui_SysTray9733cb();
+}
+
+void Ui_SysTray9733cb_DestroyUi_SysTrayDefault(void* ptr)
+{
+	Q_UNUSED(ptr);
+
+}
+
+char Ui_SysTray9733cb_EventDefault(void* ptr, void* e)
+{
+	return static_cast<Ui_SysTray9733cb*>(ptr)->QObject::event(static_cast<QEvent*>(e));
+}
+
+char Ui_SysTray9733cb_EventFilterDefault(void* ptr, void* watched, void* event)
+{
+	return static_cast<Ui_SysTray9733cb*>(ptr)->QObject::eventFilter(static_cast<QObject*>(watched), static_cast<QEvent*>(event));
+}
+
+void Ui_SysTray9733cb_ChildEventDefault(void* ptr, void* event)
+{
+	static_cast<Ui_SysTray9733cb*>(ptr)->QObject::childEvent(static_cast<QChildEvent*>(event));
+}
+
+void Ui_SysTray9733cb_ConnectNotifyDefault(void* ptr, void* sign)
+{
+	static_cast<Ui_SysTray9733cb*>(ptr)->QObject::connectNotify(*static_cast<QMetaMethod*>(sign));
+}
+
+void Ui_SysTray9733cb_CustomEventDefault(void* ptr, void* event)
+{
+	static_cast<Ui_SysTray9733cb*>(ptr)->QObject::customEvent(static_cast<QEvent*>(event));
+}
+
+void Ui_SysTray9733cb_DeleteLaterDefault(void* ptr)
+{
+	static_cast<Ui_SysTray9733cb*>(ptr)->QObject::deleteLater();
+}
+
+void Ui_SysTray9733cb_DisconnectNotifyDefault(void* ptr, void* sign)
+{
+	static_cast<Ui_SysTray9733cb*>(ptr)->QObject::disconnectNotify(*static_cast<QMetaMethod*>(sign));
+}
+
+void Ui_SysTray9733cb_TimerEventDefault(void* ptr, void* event)
+{
+	static_cast<Ui_SysTray9733cb*>(ptr)->QObject::timerEvent(static_cast<QTimerEvent*>(event));
+}
+
+
+
+void AppDoingList9733cb_ConnectQuitApp(void* ptr)
+{
+	QObject::connect(static_cast<AppDoingList9733cb*>(ptr), static_cast<void (AppDoingList9733cb::*)(Ui_Dialog9733cb*, AppDoingList9733cb*, QDialog*)>(&AppDoingList9733cb::quitApp), static_cast<AppDoingList9733cb*>(ptr), static_cast<void (AppDoingList9733cb::*)(Ui_Dialog9733cb*, AppDoingList9733cb*, QDialog*)>(&AppDoingList9733cb::Signal_QuitApp));
+}
+
+void AppDoingList9733cb_DisconnectQuitApp(void* ptr)
+{
+	QObject::disconnect(static_cast<AppDoingList9733cb*>(ptr), static_cast<void (AppDoingList9733cb::*)(Ui_Dialog9733cb*, AppDoingList9733cb*, QDialog*)>(&AppDoingList9733cb::quitApp), static_cast<AppDoingList9733cb*>(ptr), static_cast<void (AppDoingList9733cb::*)(Ui_Dialog9733cb*, AppDoingList9733cb*, QDialog*)>(&AppDoingList9733cb::Signal_QuitApp));
+}
+
+void AppDoingList9733cb_QuitApp(void* ptr, void* ui, void* app, void* mainDialog)
+{
+	static_cast<AppDoingList9733cb*>(ptr)->quitApp(static_cast<Ui_Dialog9733cb*>(ui), static_cast<AppDoingList9733cb*>(app), static_cast<QDialog*>(mainDialog));
+}
+
+void AppDoingList9733cb_ConnectActivateApp(void* ptr)
+{
+	QObject::connect(static_cast<AppDoingList9733cb*>(ptr), static_cast<void (AppDoingList9733cb::*)(Ui_Dialog9733cb*, AppDoingList9733cb*, QDialog*)>(&AppDoingList9733cb::activateApp), static_cast<AppDoingList9733cb*>(ptr), static_cast<void (AppDoingList9733cb::*)(Ui_Dialog9733cb*, AppDoingList9733cb*, QDialog*)>(&AppDoingList9733cb::Signal_ActivateApp));
+}
+
+void AppDoingList9733cb_DisconnectActivateApp(void* ptr)
+{
+	QObject::disconnect(static_cast<AppDoingList9733cb*>(ptr), static_cast<void (AppDoingList9733cb::*)(Ui_Dialog9733cb*, AppDoingList9733cb*, QDialog*)>(&AppDoingList9733cb::activateApp), static_cast<AppDoingList9733cb*>(ptr), static_cast<void (AppDoingList9733cb::*)(Ui_Dialog9733cb*, AppDoingList9733cb*, QDialog*)>(&AppDoingList9733cb::Signal_ActivateApp));
+}
+
+void AppDoingList9733cb_ActivateApp(void* ptr, void* ui, void* app, void* mainDialog)
+{
+	static_cast<AppDoingList9733cb*>(ptr)->activateApp(static_cast<Ui_Dialog9733cb*>(ui), static_cast<AppDoingList9733cb*>(app), static_cast<QDialog*>(mainDialog));
+}
+
+int AppDoingList9733cb_AppDoingList9733cb_QRegisterMetaType()
+{
+	return qRegisterMetaType<AppDoingList9733cb*>();
+}
+
+int AppDoingList9733cb_AppDoingList9733cb_QRegisterMetaType2(char* typeName)
+{
+	return qRegisterMetaType<AppDoingList9733cb*>(const_cast<const char*>(typeName));
+}
+
+void* AppDoingList9733cb___allWidgets_atList(void* ptr, int i)
+{
+	return ({QWidget * tmp = static_cast<QList<QWidget *>*>(ptr)->at(i); if (i == static_cast<QList<QWidget *>*>(ptr)->size()-1) { static_cast<QList<QWidget *>*>(ptr)->~QList(); free(ptr); }; tmp; });
+}
+
+void AppDoingList9733cb___allWidgets_setList(void* ptr, void* i)
+{
+	static_cast<QList<QWidget *>*>(ptr)->append(static_cast<QWidget*>(i));
+}
+
+void* AppDoingList9733cb___allWidgets_newList(void* ptr)
+{
+	Q_UNUSED(ptr);
+	return new QList<QWidget *>();
+}
+
+void* AppDoingList9733cb___topLevelWidgets_atList(void* ptr, int i)
+{
+	return ({QWidget * tmp = static_cast<QList<QWidget *>*>(ptr)->at(i); if (i == static_cast<QList<QWidget *>*>(ptr)->size()-1) { static_cast<QList<QWidget *>*>(ptr)->~QList(); free(ptr); }; tmp; });
+}
+
+void AppDoingList9733cb___topLevelWidgets_setList(void* ptr, void* i)
+{
+	static_cast<QList<QWidget *>*>(ptr)->append(static_cast<QWidget*>(i));
+}
+
+void* AppDoingList9733cb___topLevelWidgets_newList(void* ptr)
+{
+	Q_UNUSED(ptr);
+	return new QList<QWidget *>();
+}
+
+void* AppDoingList9733cb___screens_atList(void* ptr, int i)
+{
+	return ({QScreen * tmp = static_cast<QList<QScreen *>*>(ptr)->at(i); if (i == static_cast<QList<QScreen *>*>(ptr)->size()-1) { static_cast<QList<QScreen *>*>(ptr)->~QList(); free(ptr); }; tmp; });
+}
+
+void AppDoingList9733cb___screens_setList(void* ptr, void* i)
+{
+	static_cast<QList<QScreen *>*>(ptr)->append(static_cast<QScreen*>(i));
+}
+
+void* AppDoingList9733cb___screens_newList(void* ptr)
+{
+	Q_UNUSED(ptr);
+	return new QList<QScreen *>();
+}
+
+void* AppDoingList9733cb___dynamicPropertyNames_atList(void* ptr, int i)
+{
+	return new QByteArray(({QByteArray tmp = static_cast<QList<QByteArray>*>(ptr)->at(i); if (i == static_cast<QList<QByteArray>*>(ptr)->size()-1) { static_cast<QList<QByteArray>*>(ptr)->~QList(); free(ptr); }; tmp; }));
+}
+
+void AppDoingList9733cb___dynamicPropertyNames_setList(void* ptr, void* i)
+{
+	static_cast<QList<QByteArray>*>(ptr)->append(*static_cast<QByteArray*>(i));
+}
+
+void* AppDoingList9733cb___dynamicPropertyNames_newList(void* ptr)
+{
+	Q_UNUSED(ptr);
+	return new QList<QByteArray>();
+}
+
+void* AppDoingList9733cb___findChildren_atList2(void* ptr, int i)
+{
+	return ({QObject* tmp = static_cast<QList<QObject*>*>(ptr)->at(i); if (i == static_cast<QList<QObject*>*>(ptr)->size()-1) { static_cast<QList<QObject*>*>(ptr)->~QList(); free(ptr); }; tmp; });
+}
+
+void AppDoingList9733cb___findChildren_setList2(void* ptr, void* i)
+{
+	static_cast<QList<QObject*>*>(ptr)->append(static_cast<QObject*>(i));
+}
+
+void* AppDoingList9733cb___findChildren_newList2(void* ptr)
+{
+	Q_UNUSED(ptr);
+	return new QList<QObject*>();
+}
+
+void* AppDoingList9733cb___findChildren_atList3(void* ptr, int i)
+{
+	return ({QObject* tmp = static_cast<QList<QObject*>*>(ptr)->at(i); if (i == static_cast<QList<QObject*>*>(ptr)->size()-1) { static_cast<QList<QObject*>*>(ptr)->~QList(); free(ptr); }; tmp; });
+}
+
+void AppDoingList9733cb___findChildren_setList3(void* ptr, void* i)
+{
+	static_cast<QList<QObject*>*>(ptr)->append(static_cast<QObject*>(i));
+}
+
+void* AppDoingList9733cb___findChildren_newList3(void* ptr)
+{
+	Q_UNUSED(ptr);
+	return new QList<QObject*>();
+}
+
+void* AppDoingList9733cb___findChildren_atList(void* ptr, int i)
+{
+	return ({QObject* tmp = static_cast<QList<QObject*>*>(ptr)->at(i); if (i == static_cast<QList<QObject*>*>(ptr)->size()-1) { static_cast<QList<QObject*>*>(ptr)->~QList(); free(ptr); }; tmp; });
+}
+
+void AppDoingList9733cb___findChildren_setList(void* ptr, void* i)
+{
+	static_cast<QList<QObject*>*>(ptr)->append(static_cast<QObject*>(i));
+}
+
+void* AppDoingList9733cb___findChildren_newList(void* ptr)
+{
+	Q_UNUSED(ptr);
+	return new QList<QObject*>();
+}
+
+void* AppDoingList9733cb___children_atList(void* ptr, int i)
+{
+	return ({QObject * tmp = static_cast<QList<QObject *>*>(ptr)->at(i); if (i == static_cast<QList<QObject *>*>(ptr)->size()-1) { static_cast<QList<QObject *>*>(ptr)->~QList(); free(ptr); }; tmp; });
+}
+
+void AppDoingList9733cb___children_setList(void* ptr, void* i)
+{
+	static_cast<QList<QObject *>*>(ptr)->append(static_cast<QObject*>(i));
+}
+
+void* AppDoingList9733cb___children_newList(void* ptr)
+{
+	Q_UNUSED(ptr);
+	return new QList<QObject *>();
+}
+
+void* AppDoingList9733cb_NewAppDoingList(int argc, char* argv)
+{
+	static int argcs = argc;
+	static char** argvs = static_cast<char**>(malloc(argcs * sizeof(char*)));
+
+	QList<QByteArray> aList = QByteArray(argv).split('|');
+	for (int i = 0; i < argcs; i++)
+		argvs[i] = (new QByteArray(aList.at(i)))->data();
+
+	return new AppDoingList9733cb(argcs, argvs);
+}
+
+void AppDoingList9733cb_DestroyAppDoingList(void* ptr)
+{
+	static_cast<AppDoingList9733cb*>(ptr)->~AppDoingList9733cb();
+}
+
+void AppDoingList9733cb_DestroyAppDoingListDefault(void* ptr)
+{
+	Q_UNUSED(ptr);
+
+}
+
+char AppDoingList9733cb_EventDefault(void* ptr, void* e)
+{
+	return static_cast<AppDoingList9733cb*>(ptr)->QApplication::event(static_cast<QEvent*>(e));
+}
+
+void AppDoingList9733cb_AboutQtDefault(void* ptr)
+{
+	static_cast<AppDoingList9733cb*>(ptr)->QApplication::aboutQt();
+}
+
+void AppDoingList9733cb_CloseAllWindowsDefault(void* ptr)
+{
+	static_cast<AppDoingList9733cb*>(ptr)->QApplication::closeAllWindows();
+}
+
+void AppDoingList9733cb_SetAutoSipEnabledDefault(void* ptr, char enabled)
+{
+	static_cast<AppDoingList9733cb*>(ptr)->QApplication::setAutoSipEnabled(enabled != 0);
+}
+
+void AppDoingList9733cb_SetStyleSheetDefault(void* ptr, struct Moc_PackedString sheet)
+{
+	static_cast<AppDoingList9733cb*>(ptr)->QApplication::setStyleSheet(QString::fromUtf8(sheet.data, sheet.len));
+}
+
+char AppDoingList9733cb_AutoSipEnabledDefault(void* ptr)
+{
+	return static_cast<AppDoingList9733cb*>(ptr)->QApplication::autoSipEnabled();
+}
+
+
+
+void AppDoingList9733cb_QuitDefault(void* ptr)
+{
+	static_cast<AppDoingList9733cb*>(ptr)->QApplication::quit();
+}
+
+char AppDoingList9733cb_EventFilterDefault(void* ptr, void* watched, void* event)
+{
+	return static_cast<AppDoingList9733cb*>(ptr)->QApplication::eventFilter(static_cast<QObject*>(watched), static_cast<QEvent*>(event));
+}
+
+void AppDoingList9733cb_ChildEventDefault(void* ptr, void* event)
+{
+	static_cast<AppDoingList9733cb*>(ptr)->QApplication::childEvent(static_cast<QChildEvent*>(event));
+}
+
+void AppDoingList9733cb_ConnectNotifyDefault(void* ptr, void* sign)
+{
+	static_cast<AppDoingList9733cb*>(ptr)->QApplication::connectNotify(*static_cast<QMetaMethod*>(sign));
+}
+
+void AppDoingList9733cb_CustomEventDefault(void* ptr, void* event)
+{
+	static_cast<AppDoingList9733cb*>(ptr)->QApplication::customEvent(static_cast<QEvent*>(event));
+}
+
+void AppDoingList9733cb_DeleteLaterDefault(void* ptr)
+{
+	static_cast<AppDoingList9733cb*>(ptr)->QApplication::deleteLater();
+}
+
+void AppDoingList9733cb_DisconnectNotifyDefault(void* ptr, void* sign)
+{
+	static_cast<AppDoingList9733cb*>(ptr)->QApplication::disconnectNotify(*static_cast<QMetaMethod*>(sign));
+}
+
+void AppDoingList9733cb_TimerEventDefault(void* ptr, void* event)
+{
+	static_cast<AppDoingList9733cb*>(ptr)->QApplication::timerEvent(static_cast<QTimerEvent*>(event));
 }
 
 #include "moc_moc.h"
